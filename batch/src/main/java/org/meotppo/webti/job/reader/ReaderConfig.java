@@ -6,9 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.util.Collections;
 
 @Configuration
 public class ReaderConfig {
@@ -18,12 +20,14 @@ public class ReaderConfig {
     @Bean(name = TECH_PREFERENCE_TEST_RESULT_READER)
     public MongoPagingItemReader<TechPreferenceTestResult> techPreferenceTestResultReader(MongoTemplate mongoTemplate) {
         MongoPagingItemReader<TechPreferenceTestResult> reader = new MongoPagingItemReader<>();
+
+        Query query = new Query();
+        query.addCriteria(Criteria.where("createdAt").gt(LocalDateTime.now().minusHours(1)));
+
         reader.setTemplate(mongoTemplate);
         reader.setPageSize(10);
-        reader.setQuery(new Query());
-        reader.setSort(new HashMap<String, Sort.Direction>() {{
-            put("_id", Sort.Direction.ASC);
-        }});
+        reader.setQuery(query);
+        reader.setSort(Collections.singletonMap("createdAt", Sort.Direction.ASC));
         reader.setTargetType(TechPreferenceTestResult.class);
         return reader;
     }

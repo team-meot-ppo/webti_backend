@@ -22,7 +22,7 @@ import static org.meotppo.webti.job.reader.ReaderConfig.TECH_PREFERENCE_TEST_RES
 import static org.meotppo.webti.job.writer.WriterConfig.TECH_ROLE_STATISTICS_WRITER;
 
 @Configuration
-public class TechRoleStatisticsJobConfig {
+public class TechRoleStatisticsJobConfig {  // TODO. 통계 로직의 성능 개선
 
     public static final String TECH_ROLE_STATISTICS_JOB = "techRoleStatisticsJob";
     public static final String TECH_ROLE_STATISTICS_STEP = "techRoleStatisticsStep";

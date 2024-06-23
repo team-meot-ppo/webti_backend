@@ -11,14 +11,8 @@ public class WriterConfig {
 
     public static final String TECH_ROLE_STATISTICS_WRITER = "techRoleStatisticsWriter";
 
-    private final TechRoleStatisticsRepository techRoleStatisticsRepository;
-
-    public WriterConfig(TechRoleStatisticsRepository techRoleStatisticsRepository) {
-        this.techRoleStatisticsRepository = techRoleStatisticsRepository;
-    }
-
     @Bean(name = TECH_ROLE_STATISTICS_WRITER)
-    public ItemWriter<TechRoleStatistics> techRoleStatisticsWriter() {
+    public ItemWriter<TechRoleStatistics> techRoleStatisticsWriter(TechRoleStatisticsRepository techRoleStatisticsRepository) {
         return items -> {
             for (TechRoleStatistics item : items) {
                 TechRoleStatistics existing = techRoleStatisticsRepository.findByRole(item.getRole())
