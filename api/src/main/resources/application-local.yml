@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${local-db.host}:${local-db.port}/${local-db.name}
-    username: ${local-db.username}
-    password: ${local-db.password}
+    url: jdbc:postgresql://${local-db.postgres.host}:${local-db.postgres.port}/${local-db.postgres.name}
+    username: ${local-db.postgres.username}
+    password: ${local-db.postgres.password}
 
   jpa:
     properties:
@@ -15,7 +15,15 @@ spring:
     open-in-view: false
     show-sql: true
 
+  data:
+    mongodb:
+      uri: mongodb+srv://${local-db.mongo.username}:${local-db.mongo.password}@${local-db.mongo.host}/?retryWrites=true&w=majority&appName=${local-db.mongo.database}
+      database: ${local-db.mongo.database}
+
 logging:
   level:
     org.hibernate.orm.jdbc.bind: trace
+#    org.springframework.data.mongodb.core.MongoTemplate: debug
+#    org.springframework.data.mongodb.core.convert: debug
+#    org.springframework.data.mongodb.core.query: debug
 #    org.springframework.transaction.interceptor: trace

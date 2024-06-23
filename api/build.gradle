@@ -24,6 +24,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // MongoDB
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     // Actuator
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     // Prometheus

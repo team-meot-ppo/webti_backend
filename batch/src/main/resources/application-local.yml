@@ -3,16 +3,16 @@ spring:
     meta:
       hikari:
         driver-class-name: org.postgresql.Driver
-        jdbc-url: jdbc:postgresql://${local.meta-db.host}:${local.meta-db.port}/${local.meta-db.name}
-        username: ${local.meta-db.username}
-        password: ${local.meta-db.password}
+        jdbc-url: jdbc:postgresql://${local-db.postgres.meta-db.host}:${local-db.postgres.meta-db.port}/${local-db.postgres.meta-db.name}
+        username: ${local-db.postgres.meta-db.username}
+        password: ${local-db.postgres.meta-db.password}
 
     domain:
       hikari:
         driver-class-name: org.postgresql.Driver
-        jdbc-url: jdbc:postgresql://${local.domain-db.host}:${local.domain-db.port}/${local.domain-db.name}
-        username: ${local.domain-db.username}
-        password: ${local.domain-db.password}
+        jdbc-url: jdbc:postgresql://${local-db.postgres.domain-db.host}:${local-db.postgres.domain-db.port}/${local-db.postgres.domain-db.name}
+        username: ${local-db.postgres.domain-db.username}
+        password: ${local-db.postgres.domain-db.password}
         auto-commit: false
 
   jpa:
@@ -25,6 +25,10 @@ spring:
     open-in-view: false
     show-sql: true
 
+  data:
+    mongodb:
+      uri: mongodb+srv://${local-db.mongo.username}:${local-db.mongo.password}@${local-db.mongo.host}/?retryWrites=true&w=majority&appName=${local-db.mongo.database}
+      database: ${local-db.mongo.database}
 logging:
   level:
     org.hibernate.orm.jdbc.bind: trace
