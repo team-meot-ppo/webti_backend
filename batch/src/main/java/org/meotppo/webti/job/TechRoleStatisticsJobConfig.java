@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import static org.meotppo.webti.config.TransactionManagerConfig.DOMAIN_TRANSACTION_MANAGER;
 import static org.meotppo.webti.job.processor.ProcessorConfig.TECH_ROLE_STATISTICS_PROCESSOR;
-import static org.meotppo.webti.job.reader.ReaderConfig.TECH_PREFERENCE_TEST_RESULT_READER;
+import static org.meotppo.webti.job.reader.ReaderConfig.TECH_ROLE_TEST_RESULT_READER;
 import static org.meotppo.webti.job.writer.WriterConfig.TECH_ROLE_STATISTICS_WRITER;
 
 @Configuration
@@ -45,12 +45,12 @@ public class TechRoleStatisticsJobConfig {  // TODO. 통계 로직의 성능 개
 
     @Bean(name = TECH_ROLE_STATISTICS_STEP)
     public Step techRoleStatisticsStep(
-            @Qualifier(TECH_PREFERENCE_TEST_RESULT_READER) MongoPagingItemReader<TechRoleTestResult> techPreferenceTestResultReader,
+            @Qualifier(TECH_ROLE_TEST_RESULT_READER) MongoPagingItemReader<TechRoleTestResult> techRoleTestResultReader,
             @Qualifier(TECH_ROLE_STATISTICS_PROCESSOR) ItemProcessor<TechRoleTestResult, TechRoleStatistics> techRoleStatisticsProcessor,
             @Qualifier(TECH_ROLE_STATISTICS_WRITER) ItemWriter<TechRoleStatistics> techRoleStatisticsWriter) {
         return new StepBuilder(TECH_ROLE_STATISTICS_STEP, jobRepository)
                 .<TechRoleTestResult, TechRoleStatistics>chunk(10, domainTransactionManager)
-                .reader(techPreferenceTestResultReader)
+                .reader(techRoleTestResultReader)
                 .processor(techRoleStatisticsProcessor)
                 .writer(techRoleStatisticsWriter)
                 .build();

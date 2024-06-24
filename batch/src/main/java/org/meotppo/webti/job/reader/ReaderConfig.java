@@ -15,10 +15,10 @@ import java.util.Collections;
 @Configuration
 public class ReaderConfig {
 
-    public static final String TECH_PREFERENCE_TEST_RESULT_READER = "techPreferenceTestResultReader";
+    public static final String TECH_ROLE_TEST_RESULT_READER = "techRoleTestResultReader";
 
-    @Bean(name = TECH_PREFERENCE_TEST_RESULT_READER)
-    public MongoPagingItemReader<TechRoleTestResult> techPreferenceTestResultReader(MongoTemplate mongoTemplate) {
+    @Bean(name = TECH_ROLE_TEST_RESULT_READER)
+    public MongoPagingItemReader<TechRoleTestResult> techRoleTestResultReader(MongoTemplate mongoTemplate) {
         MongoPagingItemReader<TechRoleTestResult> reader = new MongoPagingItemReader<>();
 
         Query query = new Query();
