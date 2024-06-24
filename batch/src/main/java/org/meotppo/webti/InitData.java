@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.meotppo.webti.domain.entity.TechRole;
 import org.meotppo.webti.domain.entity.mongo.statistics.TechRoleTestResult;
-import org.meotppo.webti.domain.repository.mongo.statistics.TechPreferenceTestResultRepository;
+import org.meotppo.webti.domain.repository.mongo.statistics.TechRoleTestResultRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
@@ -21,7 +21,7 @@ import static org.meotppo.webti.config.TransactionManagerConfig.DOMAIN_TRANSACTI
 @Slf4j
 public class InitData {
 
-    private final TechPreferenceTestResultRepository techPreferenceTestResultRepository;
+    private final TechRoleTestResultRepository techRoleTestResultRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional(transactionManager = DOMAIN_TRANSACTION_MANAGER)
@@ -37,6 +37,6 @@ public class InitData {
                         .build()
         );
 
-        techPreferenceTestResultRepository.saveAll(sampleData);
+        techRoleTestResultRepository.saveAll(sampleData);
     }
 }
