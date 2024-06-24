@@ -3,7 +3,7 @@ package org.meotppo.webti;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.meotppo.webti.domain.entity.TechRole;
-import org.meotppo.webti.domain.entity.mongo.statistics.TechPreferenceTestResult;
+import org.meotppo.webti.domain.entity.mongo.statistics.TechRoleTestResult;
 import org.meotppo.webti.domain.repository.mongo.statistics.TechPreferenceTestResultRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
@@ -26,12 +26,12 @@ public class InitData {
     @EventListener(ApplicationReadyEvent.class)
     @Transactional(transactionManager = DOMAIN_TRANSACTION_MANAGER)
     public void initData() {
-        List<TechPreferenceTestResult> sampleData = Arrays.asList(
-                TechPreferenceTestResult.builder()
+        List<TechRoleTestResult> sampleData = Arrays.asList(
+                TechRoleTestResult.builder()
                         .result(TechRole.BACKEND_ALGORITHM_EXPERT)
                         .matchesSelfAssessment(true)
                         .build(),
-                TechPreferenceTestResult.builder()
+                TechRoleTestResult.builder()
                         .result(TechRole.FULLSTACK_PROBLEM_SOLVER)
                         .matchesSelfAssessment(false)
                         .build()

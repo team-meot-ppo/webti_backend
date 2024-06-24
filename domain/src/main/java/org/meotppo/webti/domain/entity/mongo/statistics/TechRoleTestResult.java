@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Document(collection = "tech_preference_test_results")
-public class TechPreferenceTestResult extends MongoEntityDate {
+public class TechRoleTestResult extends MongoEntityDate {
 
     @Id
     private String id;
@@ -23,7 +23,7 @@ public class TechPreferenceTestResult extends MongoEntityDate {
     private boolean matchesSelfAssessment;
 
     @Builder
-    public TechPreferenceTestResult(TechRole result, boolean matchesSelfAssessment) {
+    public TechRoleTestResult(TechRole result, boolean matchesSelfAssessment) {
         this.result = result;
         this.matchesSelfAssessment = matchesSelfAssessment;
     }
