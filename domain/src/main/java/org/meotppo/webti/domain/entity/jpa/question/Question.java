@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor
-public class QuestionEntity {
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +23,4 @@ public class QuestionEntity {
 
     @Column(nullable = false)
     private Map<String, Integer> question_point;
-
-    @Column(nullable = false)
-    private String result;
 }
