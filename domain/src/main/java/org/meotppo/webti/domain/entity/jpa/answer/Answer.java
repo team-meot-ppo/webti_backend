@@ -1,6 +1,5 @@
 package org.meotppo.webti.domain.entity.jpa.answer;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,12 +15,9 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String result;
+    private String result; //개발자 유형
 
-    @Column(nullable = false)
-    private String result_point;
+    private String result_point; //개발자 유형에 대한 최종 점수
 
-    @Column(nullable = false)
-    private String description;
+    private String description; //개발자 유형에 따른 설명
 }
