@@ -4,16 +4,21 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.meotppo.webti.domain.entity.jpa.common.EntityDate;
+import org.meotppo.webti.domain.entity.TechRole;
+import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
 
 @Getter
 @Entity
 @NoArgsConstructor
-public class TechRoleStatistics extends EntityDate {  // DataBase 테스트용 TODO. 수정해야함
+public class TechRoleStatistics extends JpaEntityDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
+    private TechRole role;
 
     @Column(nullable = false)
     private Long count;
@@ -22,7 +27,8 @@ public class TechRoleStatistics extends EntityDate {  // DataBase 테스트용 T
     private Long matchesSelfAssessmentCount;
 
     @Builder
-    public TechRoleStatistics(Long count, Long matchesSelfAssessmentCount) {
+    public TechRoleStatistics(TechRole role, Long count, Long matchesSelfAssessmentCount) {
+        this.role = role;
         this.count = count;
         this.matchesSelfAssessmentCount = matchesSelfAssessmentCount;
     }
