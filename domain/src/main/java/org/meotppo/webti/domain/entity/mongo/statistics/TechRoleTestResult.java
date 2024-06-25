@@ -2,24 +2,29 @@ package org.meotppo.webti.domain.entity.mongo.statistics;
 
 import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.meotppo.webti.domain.entity.TechRole;
+import org.meotppo.webti.domain.entity.mongo.common.MongoEntityDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Data
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Document(collection = "tech_preference_test_results")
-public class TechPreferenceTestResult { // DataBase 테스트용 TODO. 수정해야함
+public class TechRoleTestResult extends MongoEntityDate {
 
     @Id
     private String id;
-    private String createdAt;
+
+    //@Indexed(unique = true)
+    private TechRole result;
+
     private boolean matchesSelfAssessment;
 
     @Builder
-    public TechPreferenceTestResult( String createdAt, boolean matchesSelfAssessment) {
-        this.createdAt = createdAt;
+    public TechRoleTestResult(TechRole result, boolean matchesSelfAssessment) {
+        this.result = result;
         this.matchesSelfAssessment = matchesSelfAssessment;
     }
 }

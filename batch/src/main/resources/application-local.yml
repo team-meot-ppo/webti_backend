@@ -29,6 +29,7 @@ spring:
     mongodb:
       uri: mongodb+srv://${local-db.mongo.username}:${local-db.mongo.password}@${local-db.mongo.host}/?retryWrites=true&w=majority&appName=${local-db.mongo.database}
       database: ${local-db.mongo.database}
+
 logging:
   level:
     org.hibernate.orm.jdbc.bind: trace
