@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.repository.question;
+package org.meotppo.webti.domain.repository.jpa.question;
 
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
