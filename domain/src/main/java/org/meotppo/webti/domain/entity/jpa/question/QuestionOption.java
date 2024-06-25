@@ -1,28 +1,31 @@
 package org.meotppo.webti.domain.entity.jpa.question;
 
-import java.util.List;
-
 import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
 @NoArgsConstructor
-public class Question extends JpaEntityDate {
+public class QuestionOption extends JpaEntityDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String question; // 질문
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<QuestionOption> options; // 질문에 대한 답
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
+
+    private String answerText; // 질문에 대한 답
+
+    private String type; // "E" or "I"
+
+    private Integer score; // 점수 1, 0
 }
