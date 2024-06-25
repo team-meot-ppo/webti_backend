@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    default: local
+
+  config:
+    import:
+      - security/application-db.yml
+
+  batch:
+    job:
+      name: techRoleStatisticsJob
+    jdbc:
+      initialize-schema: always

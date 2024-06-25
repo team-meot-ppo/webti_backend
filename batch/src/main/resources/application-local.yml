@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    meta:
+      hikari:
+        driver-class-name: org.postgresql.Driver
+        jdbc-url: jdbc:postgresql://${local-db.postgres.meta-db.host}:${local-db.postgres.meta-db.port}/${local-db.postgres.meta-db.name}
+        username: ${local-db.postgres.meta-db.username}
+        password: ${local-db.postgres.meta-db.password}
+
+    domain:
+      hikari:
+        driver-class-name: org.postgresql.Driver
+        jdbc-url: jdbc:postgresql://${local-db.postgres.domain-db.host}:${local-db.postgres.domain-db.port}/${local-db.postgres.domain-db.name}
+        username: ${local-db.postgres.domain-db.username}
+        password: ${local-db.postgres.domain-db.password}
+        auto-commit: false
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+        hbm2ddl.auto: validate
+        default_batch_fetch_size: 100
+    open-in-view: false
+    show-sql: true
+
+  data:
+    mongodb:
+      uri: mongodb+srv://${local-db.mongo.username}:${local-db.mongo.password}@${local-db.mongo.host}/?retryWrites=true&w=majority&appName=${local-db.mongo.database}
+      database: ${local-db.mongo.database}
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace
+#    org.springframework.transaction.interceptor: trace
