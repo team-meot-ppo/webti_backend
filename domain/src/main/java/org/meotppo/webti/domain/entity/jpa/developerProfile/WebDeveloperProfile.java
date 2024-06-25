@@ -1,7 +1,7 @@
 package org.meotppo.webti.domain.entity.jpa.developerProfile;
 
 import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
-import org.meotppo.webti.domain.entity.type.DeveloperTI;
+import org.meotppo.webti.domain.entity.type.MbtiType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -22,14 +22,14 @@ public class WebDeveloperProfile extends JpaEntityDate {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private DeveloperTI type;
+    private MbtiType type;
 
     private String result; //개발자 유형
 
     private String description; //개발자 유형에 따른 설명
 
     @Builder
-    public WebDeveloperProfile(DeveloperTI type, String result, String description) {
+    public WebDeveloperProfile(MbtiType type, String result, String description) {
         this.type = type;
         this.result = result;
         this.description = description;
