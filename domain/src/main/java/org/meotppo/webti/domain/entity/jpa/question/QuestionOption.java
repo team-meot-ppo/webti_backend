@@ -1,5 +1,7 @@
 package org.meotppo.webti.domain.entity.jpa.question;
 
+import org.meotppo.webti.domain.entity.jpa.common.EntityDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor
-public class QuestionOption {
+public class QuestionOption extends EntityDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

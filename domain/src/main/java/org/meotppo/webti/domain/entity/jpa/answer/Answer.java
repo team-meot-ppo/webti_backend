@@ -1,5 +1,7 @@
 package org.meotppo.webti.domain.entity.jpa.answer;
 
+import org.meotppo.webti.domain.entity.jpa.common.EntityDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Answer {
+public class Answer extends EntityDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
