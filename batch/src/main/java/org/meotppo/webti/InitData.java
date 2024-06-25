@@ -30,15 +30,15 @@ public class InitData {
     @EventListener(ApplicationReadyEvent.class)
     @Transactional(transactionManager = DOMAIN_TRANSACTION_MANAGER)
     public void initData() {
-        
+
 //        List<WebDeveloperProfile> profileData = Arrays.asList( // TODO. 초기 데이터 구축 시스템 개발 시 삭제
 //                WebDeveloperProfile.builder()
-//                        .type(MbtiType.INTJ)
+//                        .mbtiType(MbtiType.INTJ)
 //                        .result("Backend Developer")
 //                        .description("Prefers to work on server-side logic and algorithms.")
 //                        .build(),
 //                WebDeveloperProfile.builder()
-//                        .type(MbtiType.ENFP)
+//                        .mbtiType(MbtiType.ENFP)
 //                        .result("Fullstack Developer")
 //                        .description("Enjoys working on both frontend and backend aspects of applications.")
 //                        .build()
