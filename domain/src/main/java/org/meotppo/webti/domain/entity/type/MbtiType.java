@@ -1,6 +1,6 @@
 package org.meotppo.webti.domain.entity.type;
 
-public enum DeveloperTI {
+public enum MbtiType {
     ISTJ,
     INTJ,
     ISTP,
