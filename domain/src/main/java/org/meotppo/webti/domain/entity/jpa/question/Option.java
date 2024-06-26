@@ -24,12 +24,13 @@ public class Option {
     private Long id;
 
     @Column(length = 500, nullable = false)
-    private String text;
+    private String answer;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PersonalityType personalityType; 
 
+    @Column(nullable = false)
     private int score;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -23,7 +23,7 @@ public class Question extends JpaEntityDate { // 질문과 답변을 프론트�
     private Long id;
     
     @Column(length = 500, nullable = false)
-    private String content;
+    private String question;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Option> options;

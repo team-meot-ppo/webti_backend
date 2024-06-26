@@ -20,8 +20,10 @@ public class WebDeveloperProfile extends JpaEntityDate {
     @Column(unique = true)
     private MbtiType mbtiType;
 
+    @Column(nullable = false)
     private String result; //개발자 유형
 
+    @Column(nullable = false)
     private String description; //개발자 유형에 따른 설명
 
     @Builder
