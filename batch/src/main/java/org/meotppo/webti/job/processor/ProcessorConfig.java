@@ -1,22 +1,33 @@
 package org.meotppo.webti.job.processor;
 
-import org.meotppo.webti.domain.entity.jpa.statistics.TechRoleStatistics;
-import org.meotppo.webti.domain.entity.mongo.statistics.TechRoleTestResult;
+import lombok.RequiredArgsConstructor;
+import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
+import org.meotppo.webti.domain.entity.mongo.result.TestResult;
+import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@RequiredArgsConstructor
 public class ProcessorConfig {
 
-    public static final String TECH_ROLE_STATISTICS_PROCESSOR = "techRoleStatisticsProcessor";
+    public static final String STATISTIC_PROCESSOR = "statisticProcessor";
 
-    @Bean(name = TECH_ROLE_STATISTICS_PROCESSOR)
-    public ItemProcessor<TechRoleTestResult, TechRoleStatistics> techRoleStatisticsProcessor() {
-        return item -> TechRoleStatistics.builder()
-                .role(item.getResult())
-                .count(1L)
-                .matchesSelfAssessmentCount(item.isMatchesSelfAssessment() ? 1L : 0L)
-                .build();
+    private final WebDeveloperProfileRepository webDeveloperProfileRepository;
+
+    @Bean(name = STATISTIC_PROCESSOR)
+    public ItemProcessor<TestResult, Statistic> statisticProcessor() {
+        return item -> {
+            WebDeveloperProfile profile = webDeveloperProfileRepository.findByMbtiType(item.getMbtiType())
+                    .orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + item.getMbtiType()));
+
+            return Statistic.builder()
+                    .developerProfile(profile)
+                    .count(1L)
+                    .matchCount(item.isMatch() ? 1L : 0L)
+                    .build();
+        };
     }
 }
