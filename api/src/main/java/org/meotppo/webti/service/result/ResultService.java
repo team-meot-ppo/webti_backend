@@ -31,7 +31,8 @@ public class ResultService {
                         statistic.getId(),
                         statistic.getDeveloperProfile().getResult(),
                         statistic.getCount(),
-                        statistic.getMatchCount()
+                        statistic.getMatchCount(),
+                        statistic.getModifiedAt()
                 ))
                 .collect(Collectors.toList());
     }
