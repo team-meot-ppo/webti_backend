@@ -1,13 +1,8 @@
 name: Deploy to Amazon ECS
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
-    paths-ignore:
-      - 'batch/**'  # 배치 관련 코드는 배포하지 않음
+  push:
+    branches: [ "main" ]
   
 env:
   AWS_REGION: ap-northeast-2
@@ -18,7 +13,9 @@ env:
   CONTAINER_NAME: was
 
 permissions:
-  contents: read
+  contents: write
+  packages: write
+  pull-requests: write
 
 jobs:
   deploy:
