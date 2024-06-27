@@ -8,7 +8,7 @@ on:
       - closed
     paths-ignore:
       - 'batch/**'  # 배치 관련 코드는 배포하지 않음
-
+  
 env:
   AWS_REGION: ap-northeast-2
   ECR_REPOSITORY: webti_api
@@ -17,8 +17,7 @@ env:
   ECS_TASK_FAMILY: webti_api
   CONTAINER_NAME: was
 
-permissions:
-  contents: read
+permissions: write-all
 
 jobs:
   deploy:
