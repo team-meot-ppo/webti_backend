@@ -32,7 +32,6 @@ public class ResultService {
     public List<StatisticDTO> readStatistics() {
         return statisticRepository.findAll().stream()
                 .map(statistic -> new StatisticDTO(
-                        statistic.getId(),
                         statistic.getDeveloperProfile().getResult(),
                         statistic.getCount(),
                         statistic.getMatchCount(),
