@@ -1,0 +1,8 @@
+[submodule "batch/src/main/resources/security"]
+	path = batch/src/main/resources/security
+	url = https://github.com/team-meot-ppo/webti_backend-Batch_Security.git
+	branch = main
+[submodule "api/src/main/resources/security"]
+	path = api/src/main/resources/security
+	url = https://github.com/team-meot-ppo/webti_backend-api_security.git
+	branch = main

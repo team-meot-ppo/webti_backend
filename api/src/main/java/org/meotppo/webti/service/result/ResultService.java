@@ -7,16 +7,20 @@ import org.meotppo.webti.domain.repository.mongo.result.TestResultRepository;
 import org.meotppo.webti.dto.result.StatisticDTO;
 import org.meotppo.webti.dto.result.TestResultRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
+@Transactional(readOnly = true)
 public class ResultService {
 
     private final TestResultRepository testResultRepository;
     private final StatisticRepository statisticRepository;
 
+    @Transactional
     public void createTestResult(TestResultRequest req) {
         TestResult testResult = TestResult.builder()
                 .mbtiType(req.getMbtiType())
@@ -28,7 +32,6 @@ public class ResultService {
     public List<StatisticDTO> readStatistics() {
         return statisticRepository.findAll().stream()
                 .map(statistic -> new StatisticDTO(
-                        statistic.getId(),
                         statistic.getDeveloperProfile().getResult(),
                         statistic.getCount(),
                         statistic.getMatchCount(),

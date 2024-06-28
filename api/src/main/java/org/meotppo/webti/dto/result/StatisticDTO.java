@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StatisticDTO {
-    private Long id;
     private String result;
     private Long count;
     private Long matchCount;

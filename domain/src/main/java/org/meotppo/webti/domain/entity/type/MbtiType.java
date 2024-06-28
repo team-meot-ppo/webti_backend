@@ -7,10 +7,14 @@ public enum MbtiType {
     INTP,
     ISFJ,
     ESFP,
-    ENFP, 
+    ENFP,
     ESFJ,
     INFJ,
     ENTP,
     ENFJ,
-    ENTJ 
+    ENTJ,
+    ISFP,
+    INFP,
+    ESTP,
+    ESTJ
 }
