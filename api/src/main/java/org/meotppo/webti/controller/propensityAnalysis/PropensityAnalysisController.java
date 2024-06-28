@@ -4,7 +4,6 @@ import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 
 import java.util.List;
 
-import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
 import org.meotppo.webti.dto.PropensityAnalysis.PropensityAnalysisDto;
 import org.meotppo.webti.dto.PropensityAnalysis.PropensityProfileResponseDto;
 import org.meotppo.webti.dto.PropensityAnalysis.PropensityQuestionDto;
@@ -22,25 +21,19 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/developer-ti/v1")
+@RequestMapping("/api/propensity-analysis/v1")
 public class PropensityAnalysisController {
     private final PropensityAnalysisService propensityAnalysisService;
 
-    @PostMapping("/propensity-analysis")
+    @PostMapping("/result")
     public ResponseEntity<ResponseBody<PropensityProfileResponseDto>> propensityAnalysis(@RequestBody PropensityAnalysisDto propensityAnalysisDto) {
-        String developerTypeCode = propensityAnalysisService.analyzeType(propensityAnalysisDto);
-        WebDeveloperProfile profile = propensityAnalysisService.getDeveloperProfile(developerTypeCode);
-        PropensityProfileResponseDto responseDto = PropensityProfileResponseDto.builder()
-                .result(profile.getResult())
-                .description(profile.getDescription())
-                .build();
-
+        PropensityProfileResponseDto responseDto = propensityAnalysisService.analyzeType(propensityAnalysisDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(createSuccessResponse(responseDto));
     }
 
-    @GetMapping("/propensity-analysis/question")
+    @GetMapping("/question")
     public ResponseEntity<ResponseBody<List<PropensityQuestionDto>>> getPropensityQuestions() {
         List<PropensityQuestionDto> questions = propensityAnalysisService.getPropensityQuestions();
         return ResponseEntity.ok(createSuccessResponse(questions));
