@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -26,7 +27,7 @@ public class PropensityAnalysisController {
     private final PropensityAnalysisService propensityAnalysisService;
 
     @PostMapping("/result")
-    public ResponseEntity<ResponseBody<PropensityProfileResponseDto>> propensityAnalysis(@RequestBody PropensityAnalysisDto propensityAnalysisDto) {
+    public ResponseEntity<ResponseBody<PropensityProfileResponseDto>> propensityAnalysis(@RequestBody @Valid PropensityAnalysisDto propensityAnalysisDto) {
         PropensityProfileResponseDto responseDto = propensityAnalysisService.analyzeType(propensityAnalysisDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
