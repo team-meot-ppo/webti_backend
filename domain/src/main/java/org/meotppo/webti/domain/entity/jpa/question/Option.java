@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,15 +25,28 @@ public class Option {
     private Long id;
 
     @Column(length = 500, nullable = false)
-    private String text;
+    private String answer;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PersonalityType personalityType; 
 
+    @Column(nullable = false)
     private int score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
+
+    @Builder
+    public Option(String answer, PersonalityType personalityType, int score, Question question) {
+        this.answer = answer;
+        this.personalityType = personalityType;
+        this.score = score;
+        this.question = question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 }

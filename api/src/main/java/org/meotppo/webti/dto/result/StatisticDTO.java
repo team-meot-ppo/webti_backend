@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.meotppo.webti.domain.entity.type.MbtiType;
 
 import java.time.LocalDateTime;
 

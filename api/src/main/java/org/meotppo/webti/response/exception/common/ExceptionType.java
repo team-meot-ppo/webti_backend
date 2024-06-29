@@ -9,7 +9,7 @@ import static org.springframework.http.HttpStatus.*;
 public enum ExceptionType {
     EXCEPTION(INTERNAL_SERVER_ERROR, "E001", "An unexpected error has occurred."),
     BIND_EXCEPTION(BAD_REQUEST, "E004", "There was an error with the request binding."),
-
+    MEMBER_NOT_FOUND(NOT_FOUND, "E005", "Member not found."),
     ;
 
     private final HttpStatus status;

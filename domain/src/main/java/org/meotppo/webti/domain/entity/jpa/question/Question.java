@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,8 +24,14 @@ public class Question extends JpaEntityDate { // 질문과 답변을 프론트�
     private Long id;
     
     @Column(length = 500, nullable = false)
-    private String content;
+    private String question;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Option> options;
+
+    @Builder
+    public Question(String question, List<Option> options) {
+        this.question = question;
+        this.options = options;
+    }
 }
