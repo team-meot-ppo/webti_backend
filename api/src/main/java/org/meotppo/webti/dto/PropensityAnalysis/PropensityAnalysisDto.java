@@ -29,6 +29,6 @@ public class PropensityAnalysisDto {
     @JsonProperty("P")
     private int P;
     @NotNull(message = "j cannot be null")
-    @JsonProperty("j")
-    private int j;
+    @JsonProperty("J")
+    private int J;
 }
