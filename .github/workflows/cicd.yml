@@ -1,13 +1,8 @@
 name: Deploy to Amazon ECS
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
-    paths-ignore:
-      - 'batch/**'
+  push:
+    branches: [ "main" ]
   
 env:
   AWS_REGION: ap-northeast-2
@@ -24,7 +19,6 @@ permissions:
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
@@ -34,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          token: ${{ secrets.ACTION_TOKEN }}
+          token: ${{ secrets.TOKEN }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -59,14 +53,12 @@ jobs:
           docker build --build-arg SERVICE=api -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-
       - name: Retrieve most recent ECS task definition JSON file
         id: retrieve-task-def
         run: |
           aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_FAMILY }} --query taskDefinition > task-definition.json
           cat task-definition.json
           echo "::set-output name=task-def-file::task-definition.json"
-
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
