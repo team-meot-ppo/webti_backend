@@ -1,8 +1,13 @@
 name: Deploy to Amazon ECS
 
 on:
-  push:
-    branches: [ "main" ]
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+    paths-ignore:
+      - 'batch/**'
   
 env:
   AWS_REGION: ap-northeast-2
