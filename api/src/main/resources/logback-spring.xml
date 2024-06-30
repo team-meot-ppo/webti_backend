@@ -21,7 +21,7 @@
         </filter>
         <file>${LOG_PATH}/${LOG_FILE_NAME}.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>[%X{requestId:-NO-REQUEST-ID}] %msg%n</pattern>
+            <pattern>%msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.gz</fileNamePattern>
@@ -39,7 +39,7 @@
         </filter>
         <file>${LOG_PATH}/${ERR_LOG_FILE_NAME}.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>[%X{requestId:-NO-REQUEST-ID}] %msg%n</pattern>
+            <pattern>%msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/${ERR_LOG_FILE_NAME}.%d{yyyy-MM-dd}.gz</fileNamePattern>

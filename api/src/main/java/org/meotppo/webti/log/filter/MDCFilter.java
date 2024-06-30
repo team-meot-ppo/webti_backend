@@ -10,7 +10,7 @@ import java.util.UUID;
 @Component
 public class MDCFilter implements Filter {
 
-    private static final String REQUEST_ID = "requestId";
+    public static final String REQUEST_ID = "requestId";
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
