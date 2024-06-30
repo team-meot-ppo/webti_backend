@@ -1,8 +1,8 @@
 package org.meotppo.webti.response.exception.common;
 
-public class WebDeveloperProfileNotFoundException extends MemberBusinessException {
+public class WebDeveloperProfileNotFoundException extends BusinessException {
 
     public WebDeveloperProfileNotFoundException() {
-        super(ExceptionType.MEMBER_NOT_FOUND);
+        super(ExceptionType.WEB_DEVELOPER_PROFILE_NOT_FOUND);
     }
 }
