@@ -11,7 +11,7 @@ WORKDIR /app/${SERVICE}
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJar
 
-RUN mkdir -p /app/build/libs && cp /app/${SERVICE}/build/libs/*.jar /app/build/libs/app.jar
+RUN mkdir -p /app/build/libs && cp /app/${SERVICE}/build/libs/${SERVICE}-0.0.1-SNAPSHOT.jar /app/build/libs/app.jar
 
 FROM eclipse-temurin:17-jre as runtime
 
