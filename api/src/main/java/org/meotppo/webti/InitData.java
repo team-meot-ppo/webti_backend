@@ -311,8 +311,8 @@ public class InitData {
         List<Statistic> statisticData = profileData.stream()
                 .map(profile -> Statistic.builder()
                         .developerProfile(profile)
-                        .count(100L)
-                        .matchCount(50L)
+                        .count(0L)
+                        .matchCount(0L)
                         .build())
                 .collect(Collectors.toList());
 
