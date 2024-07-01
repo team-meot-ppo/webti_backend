@@ -1,6 +1,7 @@
 package org.meotppo.webti.controller.status;
 
 import lombok.RequiredArgsConstructor;
+import org.meotppo.webti.log.aop.NotLogging;
 import org.meotppo.webti.response.ResponseBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 @RequestMapping("/api/status/v1")
 public class StatusController {
 
+    @NotLogging
     @GetMapping("/check")
     public ResponseEntity<ResponseBody<String>> checkStatus() {
         return ResponseEntity
