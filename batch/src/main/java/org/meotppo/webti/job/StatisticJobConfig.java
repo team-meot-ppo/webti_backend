@@ -1,7 +1,7 @@
 package org.meotppo.webti.job;
 
 import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
-import org.meotppo.webti.domain.entity.mongo.result.TestResult;
+import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;

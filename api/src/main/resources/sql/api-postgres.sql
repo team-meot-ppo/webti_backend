@@ -55,3 +55,21 @@ INSERT INTO web_developer_profile (created_at, modified_at, description, mbti_ty
 (NOW(), NOW(), '당신은 섬세하고 창의적인 디자인 감각으로 사용자 인터페이스를 아름답게 구현합니다. 세밀한 부분까지 놓치지 않으며, 사용자가 시각적으로 즐길 수 있는 웹사이트를 만듭니다. 당신의 작업물은 예술 작품처럼 정교하고 매력적입니다.', 'ISFP', '디테일에 강한 시각 예술가형 프론트엔드 개발자'),
 (NOW(), NOW(), '사용자 경험에 깊은 공감을 가지고 디자인하는 당신은, 감성적이고 창의적인 방식으로 웹 페이지를 만듭니다. 사용자와의 상호작용에서 진정성을 발휘하며, 웹사이트를 통해 따뜻한 이야기를 전합니다. 당신의 작업물은 사용자의 마음을 움직입니다.', 'INFP', '공감하는 이야기꾼형 프론트엔드 개발자'),
 (NOW(), NOW(), '당신은 변화와 도전에 강하며, 문제를 해결하는 데 있어 유연하고 즉흥적인 접근 방식을 취합니다. 실용적이고 효율적인 방법을 선호하며, 빠른 결단력으로 프로젝트를 성공적으로 이끌어갑니다. 당신의 작업은 항상 실용적이고 동적입니다.', 'ESTP', '유연하고 즉흥적인 개발자형 풀스택 개발자');
+
+INSERT INTO statistic (created_at, modified_at, developer_profile_id, count, match_count) VALUES
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ISTJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'INTJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ISTP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'INTP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ESTJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ISFJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ESFP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ENFP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ISFP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'INFP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ESFJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'INFJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ENTP'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ENFJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ENTJ'), 0, 0),
+(NOW(), NOW(), (SELECT id FROM web_developer_profile WHERE mbti_type = 'ESTP'), 0, 0);

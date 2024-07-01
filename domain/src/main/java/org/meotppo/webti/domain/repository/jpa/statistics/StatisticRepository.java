@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface StatisticRepository extends JpaRepository<Statistic, Long> {
+public interface StatisticRepository extends JpaRepository<Statistic, Long>, QuerydslStatisticRepository {
     Optional<Statistic> findByDeveloperProfile(WebDeveloperProfile developerProfile);
 }
