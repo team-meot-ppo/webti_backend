@@ -17,13 +17,13 @@ public class Image {
     @Column(name = "file_id")
     private Long id;
 
-    @Column(name = "original_file_name")
+    @Column(name = "original_file_name", nullable = false)
     private String originalFileName;
 
-    @Column(name = "store_file_name")
+    @Column(name = "store_file_name", nullable = false)
     private String storeFileName;
 
-    @Column(name = "url")
+    @Column(name = "url", nullable = false)
     private String url;
 
     @Builder

@@ -27,7 +27,7 @@ public class WebDeveloperProfile extends JpaEntityDate {
     @Column(nullable = false)
     private String description; //개발자 유형에 따른 설명
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "image_id")
     private Image image;
 

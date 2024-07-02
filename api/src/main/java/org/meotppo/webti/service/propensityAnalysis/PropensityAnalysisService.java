@@ -9,11 +9,11 @@ import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityAnalysisDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityOptionDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityProfileResponseDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityQuestionDto;
 import org.meotppo.webti.dto.file.ImageDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityAnalysisDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityOptionDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityProfileResponseDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityQuestionDto;
 import org.meotppo.webti.response.exception.common.WebDeveloperProfileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,7 +46,7 @@ public class PropensityAnalysisService {
                 .result(developerProfile.getResult())
                 .description(developerProfile.getDescription())
                 .mbtiType(developerProfile.getMbtiType())
-                .image(imageDto)
+                .imageDto(imageDto)
                 .build();
 
         return responseDto;

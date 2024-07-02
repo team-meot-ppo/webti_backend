@@ -4,9 +4,9 @@ import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 
 import java.util.List;
 
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityAnalysisDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityProfileResponseDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityQuestionDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityAnalysisDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityProfileResponseDto;
+import org.meotppo.webti.dto.propensityAnalysis.PropensityQuestionDto;
 import org.meotppo.webti.response.ResponseBody;
 import org.meotppo.webti.service.propensityAnalysis.PropensityAnalysisService;
 import org.springframework.http.HttpStatus;

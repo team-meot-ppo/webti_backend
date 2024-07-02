@@ -1,4 +1,4 @@
-package org.meotppo.webti.dto.PropensityAnalysis;
+package org.meotppo.webti.dto.propensityAnalysis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,7 +28,7 @@ public class PropensityAnalysisDto {
     @NotNull(message = "P cannot be null")
     @JsonProperty("P")
     private int P;
-    @NotNull(message = "j cannot be null")
+    @NotNull(message = "J cannot be null")
     @JsonProperty("J")
     private int J;
 }

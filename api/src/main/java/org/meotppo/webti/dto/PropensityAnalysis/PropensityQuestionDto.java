@@ -1,4 +1,4 @@
-package org.meotppo.webti.dto.PropensityAnalysis;
+package org.meotppo.webti.dto.propensityAnalysis;
 
 import java.util.List;
 
