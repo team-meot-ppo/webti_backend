@@ -2,6 +2,7 @@ package org.meotppo.webti.domain.entity.jpa.developerProfile;
 
 import jakarta.persistence.*;
 import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
+import org.meotppo.webti.domain.entity.jpa.file.Image;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 
 import lombok.Builder;
@@ -26,10 +27,15 @@ public class WebDeveloperProfile extends JpaEntityDate {
     @Column(nullable = false)
     private String description; //개발자 유형에 따른 설명
 
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
+
     @Builder
-    public WebDeveloperProfile(MbtiType mbtiType, String result, String description) {
+    public WebDeveloperProfile(MbtiType mbtiType, String result, String description, Image image) {
         this.mbtiType = mbtiType;
         this.result = result;
         this.description = description;
+        this.image = image;
     }
 }

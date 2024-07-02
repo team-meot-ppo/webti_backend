@@ -20,6 +20,19 @@ spring:
       uri: mongodb+srv://${local-db.mongo.username}:${local-db.mongo.password}@${local-db.mongo.host}/?retryWrites=true&w=majority&appName=${local-db.mongo.database}
       database: ${local-db.mongo.database}
 
+cloud:
+  aws:
+    s3:
+      bucket: ${aws.s3.bucket}
+    credentials:
+      access-key: ${aws.s3.access-key}
+      secret-key: ${aws.s3.secret-key}
+    region:
+      static: eu-north-1
+      auto: false
+    stack:
+      auto: false
+
 logging:
   level:
     org.hibernate.orm.jdbc.bind: trace

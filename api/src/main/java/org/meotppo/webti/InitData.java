@@ -1,6 +1,7 @@
 package org.meotppo.webti;
 
 import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.file.Image;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
@@ -9,6 +10,7 @@ import org.meotppo.webti.domain.entity.type.PersonalityType;
 import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
 import org.meotppo.webti.domain.repository.jpa.statistics.StatisticRepository;
+import org.meotppo.webti.service.file.FileService;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
@@ -28,15 +30,20 @@ public class InitData {
     private final WebDeveloperProfileRepository webDeveloperProfileRepository;
     private final QuestionRepository questionRepository;
     private final StatisticRepository statisticRepository;
+    private final FileService fileService;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
     public void initData() {
+        String exampleImageUrl = "https://webti-imagebucket.s3.eu-north-1.amazonaws.com/karina.jpg"; // 테스트 용 이미지 수정 필요
+        Image exampleImage = fileService.storeImage(exampleImageUrl);
+
         List<WebDeveloperProfile> profileData = Arrays.asList(
             WebDeveloperProfile.builder()
                 .mbtiType(MbtiType.ISTJ)
                 .result("철저한 데이터 관리형 백엔드 개발자")
                 .description("데이터의 정확성과 안정성을 최우선으로 하는 당신은 백엔드 개발의 수호자! 체계적이고 신뢰할 수 있는 방식으로 데이터를 관리하며, 버그는 당신에게 있어 전설 속 이야기일 뿐입니다. 당신의 코드는 그야말로 철옹성!")
+                .image(exampleImage)
                 .build(),
             WebDeveloperProfile.builder()
                 .mbtiType(MbtiType.INTJ)

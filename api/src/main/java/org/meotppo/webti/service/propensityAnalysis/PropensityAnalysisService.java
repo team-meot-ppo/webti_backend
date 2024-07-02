@@ -13,6 +13,7 @@ import org.meotppo.webti.dto.PropensityAnalysis.PropensityAnalysisDto;
 import org.meotppo.webti.dto.PropensityAnalysis.PropensityOptionDto;
 import org.meotppo.webti.dto.PropensityAnalysis.PropensityProfileResponseDto;
 import org.meotppo.webti.dto.PropensityAnalysis.PropensityQuestionDto;
+import org.meotppo.webti.dto.file.ImageDto;
 import org.meotppo.webti.response.exception.common.WebDeveloperProfileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,11 +37,16 @@ public class PropensityAnalysisService {
 
         WebDeveloperProfile developerProfile = webDeveloperProfileRepository.findByMbtiType(MbtiType.valueOf(type.toString()))
                 .orElseThrow(() -> new WebDeveloperProfileNotFoundException());
+
+        ImageDto imageDto = ImageDto.builder()
+                .url(developerProfile.getImage().getUrl())
+                .build();
         
         PropensityProfileResponseDto responseDto = PropensityProfileResponseDto.builder()
                 .result(developerProfile.getResult())
                 .description(developerProfile.getDescription())
                 .mbtiType(developerProfile.getMbtiType())
+                .image(imageDto)
                 .build();
 
         return responseDto;
