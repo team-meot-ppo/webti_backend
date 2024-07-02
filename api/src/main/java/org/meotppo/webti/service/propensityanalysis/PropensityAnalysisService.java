@@ -1,18 +1,19 @@
-package org.meotppo.webti.service.propensityAnalysis;
+package org.meotppo.webti.service.propensityanalysis;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.type.MbtiType;
-import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
+import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityAnalysisDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityOptionDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityProfileResponseDto;
-import org.meotppo.webti.dto.PropensityAnalysis.PropensityQuestionDto;
+import org.meotppo.webti.dto.file.ImageDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityAnalysisDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityOptionDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityProfileResponseDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityQuestionDto;
 import org.meotppo.webti.response.exception.common.WebDeveloperProfileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,11 +37,16 @@ public class PropensityAnalysisService {
 
         WebDeveloperProfile developerProfile = webDeveloperProfileRepository.findByMbtiType(MbtiType.valueOf(type.toString()))
                 .orElseThrow(() -> new WebDeveloperProfileNotFoundException());
+
+        ImageDto imageDto = ImageDto.builder()
+                .url(developerProfile.getImage().getUrl())
+                .build();
         
         PropensityProfileResponseDto responseDto = PropensityProfileResponseDto.builder()
                 .result(developerProfile.getResult())
                 .description(developerProfile.getDescription())
                 .mbtiType(developerProfile.getMbtiType())
+                .imageDto(imageDto)
                 .build();
 
         return responseDto;

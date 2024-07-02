@@ -1,8 +1,8 @@
-package org.meotppo.webti.domain.repository.jpa.developerType;
+package org.meotppo.webti.domain.repository.jpa.developertype;
 
 import java.util.Optional;
 
-import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
