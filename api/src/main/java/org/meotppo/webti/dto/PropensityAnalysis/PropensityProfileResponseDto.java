@@ -1,4 +1,4 @@
-package org.meotppo.webti.dto.propensityAnalysis;
+package org.meotppo.webti.dto.propensityanalysis;
 
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.dto.file.ImageDto;

@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.entity.jpa.developerProfile;
+package org.meotppo.webti.domain.entity.jpa.developerprofile;
 
 import jakarta.persistence.*;
 import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;

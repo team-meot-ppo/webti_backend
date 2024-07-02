@@ -1,14 +1,14 @@
-package org.meotppo.webti.controller.propensityAnalysis;
+package org.meotppo.webti.controller.propensityanalysis;
 
 import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 
 import java.util.List;
 
-import org.meotppo.webti.dto.propensityAnalysis.PropensityAnalysisDto;
-import org.meotppo.webti.dto.propensityAnalysis.PropensityProfileResponseDto;
-import org.meotppo.webti.dto.propensityAnalysis.PropensityQuestionDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityAnalysisDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityProfileResponseDto;
+import org.meotppo.webti.dto.propensityanalysis.PropensityQuestionDto;
 import org.meotppo.webti.response.ResponseBody;
-import org.meotppo.webti.service.propensityAnalysis.PropensityAnalysisService;
+import org.meotppo.webti.service.propensityanalysis.PropensityAnalysisService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

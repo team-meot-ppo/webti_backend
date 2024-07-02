@@ -1,4 +1,4 @@
-package org.meotppo.webti.dto.propensityAnalysis;
+package org.meotppo.webti.dto.propensityanalysis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,13 +1,13 @@
 package org.meotppo.webti;
 
-import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.jpa.file.Image;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.entity.type.PersonalityType;
-import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
+import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
 import org.meotppo.webti.domain.repository.jpa.statistics.StatisticRepository;
 import org.meotppo.webti.service.file.FileService;
