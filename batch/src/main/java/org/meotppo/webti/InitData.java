@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
-import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
+import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
 import org.meotppo.webti.domain.repository.mongo.testresult.TestResultRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;

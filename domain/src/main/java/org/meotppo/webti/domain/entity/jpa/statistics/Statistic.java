@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
-import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 
 @Getter
 @Entity
