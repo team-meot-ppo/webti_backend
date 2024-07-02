@@ -2,7 +2,7 @@ package org.meotppo.webti.controller.result;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.dto.result.StatisticDTO;
+import org.meotppo.webti.domain.dto.result.StatisticDTO;
 import org.meotppo.webti.dto.result.TestResultRequest;
 import org.meotppo.webti.response.ResponseBody;
 import org.meotppo.webti.service.result.ResultService;
