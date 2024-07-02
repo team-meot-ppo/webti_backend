@@ -17,19 +17,11 @@ public class Image {
     @Column(name = "file_id")
     private Long id;
 
-    @Column(name = "original_file_name", nullable = false)
-    private String originalFileName;
-
-    @Column(name = "store_file_name", nullable = false)
-    private String storeFileName;
-
     @Column(name = "url", nullable = false)
     private String url;
 
     @Builder
-    public Image(String originalFileName, String storeFileName, String url) {
-        this.originalFileName = originalFileName;
-        this.storeFileName = storeFileName;
+    public Image(String url) {
         this.url = url;
     }
 }
