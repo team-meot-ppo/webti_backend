@@ -1,6 +1,6 @@
 package org.meotppo.webti.job.reader;
 
-import org.meotppo.webti.domain.entity.mongo.result.TestResult;
+import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
 import org.springframework.batch.item.data.MongoPagingItemReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
