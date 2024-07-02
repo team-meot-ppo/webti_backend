@@ -1,10 +1,9 @@
 package org.meotppo.webti.job.tasklet;
 
 import org.bson.Document;
-import org.meotppo.webti.domain.entity.jpa.developerProfile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
 import org.meotppo.webti.domain.entity.type.MbtiType;
-import org.meotppo.webti.domain.repository.jpa.developerType.WebDeveloperProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.statistics.StatisticRepository;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -16,8 +15,6 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.ConditionalOperators;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
@@ -27,9 +24,9 @@ public class StatisticTasklet implements Tasklet {
 
     private final MongoTemplate mongoTemplate;
     private final StatisticRepository statisticRepository;
-    private final WebDeveloperProfileRepository profileRepository;
+    private final org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository profileRepository;
 
-    public StatisticTasklet(MongoTemplate mongoTemplate, StatisticRepository statisticRepository, WebDeveloperProfileRepository profileRepository) {
+    public StatisticTasklet(MongoTemplate mongoTemplate, StatisticRepository statisticRepository, org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository profileRepository) {
         this.mongoTemplate = mongoTemplate;
         this.statisticRepository = statisticRepository;
         this.profileRepository = profileRepository;
@@ -38,7 +35,6 @@ public class StatisticTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         Aggregation aggregation = newAggregation(
-                match(Criteria.where("createdAt").gt(LocalDateTime.now().minusHours(1))),
                 group("mbtiType")
                         .count().as("count")
                         .sum(ConditionalOperators.when(Criteria.where("match").is(true)).then(1).otherwise(0)).as("matchCount")
@@ -47,6 +43,7 @@ public class StatisticTasklet implements Tasklet {
 
         List<Document> documents = results.getMappedResults();
         documents.forEach(this::processDocument);
+
         return RepeatStatus.FINISHED;
     }
 

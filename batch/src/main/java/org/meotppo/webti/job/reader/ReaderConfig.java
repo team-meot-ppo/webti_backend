@@ -21,12 +21,9 @@ public class ReaderConfig {
     public MongoPagingItemReader<TestResult> testResultReader(MongoTemplate mongoTemplate) {
         MongoPagingItemReader<TestResult> reader = new MongoPagingItemReader<>();
 
-        Query query = new Query();
-        query.addCriteria(Criteria.where("createdAt").gt(LocalDateTime.now().minusHours(1)));
-
         reader.setTemplate(mongoTemplate);
         reader.setPageSize(10);
-        reader.setQuery(query);
+        reader.setQuery(new Query());
         reader.setSort(Collections.singletonMap("createdAt", Sort.Direction.ASC));
         reader.setTargetType(TestResult.class);
         return reader;

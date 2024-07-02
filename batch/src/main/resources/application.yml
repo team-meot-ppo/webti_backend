@@ -8,7 +8,7 @@ spring:
 
   batch:
     job:
-      name: statisticJob
+      name: statisticJobNew
       enabled: true
     jdbc:
       initialize-schema: always
