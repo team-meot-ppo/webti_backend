@@ -30,10 +30,10 @@ public class PropensityAnalysisService {
     public PropensityProfileResponseDto analyzeType(PropensityAnalysisDto propensityAnalysisDto) {
         StringBuilder type = new StringBuilder();
 
-        type.append(propensityAnalysisDto.getE() > propensityAnalysisDto.getI() ? "E" : "I");
-        type.append(propensityAnalysisDto.getS() > propensityAnalysisDto.getN() ? "S" : "N");
-        type.append(propensityAnalysisDto.getT() > propensityAnalysisDto.getF() ? "T" : "F");
-        type.append(propensityAnalysisDto.getJ() > propensityAnalysisDto.getP() ? "J" : "P");
+        type.append(propensityAnalysisDto.getEXTROVERSION() > propensityAnalysisDto.getINTROVERSION() ? "E" : "I");
+        type.append(propensityAnalysisDto.getSENSING() > propensityAnalysisDto.getINTUITION() ? "S" : "N");
+        type.append(propensityAnalysisDto.getTHINKING() > propensityAnalysisDto.getFEELING() ? "T" : "F");
+        type.append(propensityAnalysisDto.getJUDGING() > propensityAnalysisDto.getPERCEIVING() ? "J" : "P");
 
         WebDeveloperProfile developerProfile = webDeveloperProfileRepository.findByMbtiType(MbtiType.valueOf(type.toString()))
                 .orElseThrow(() -> new WebDeveloperProfileNotFoundException());

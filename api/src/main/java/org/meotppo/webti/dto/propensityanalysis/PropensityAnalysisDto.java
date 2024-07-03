@@ -7,28 +7,28 @@ import lombok.Getter;
 
 @Getter
 public class PropensityAnalysisDto {
-    @NotNull(message = "E cannot be null")
-    @JsonProperty("E")
-    private int E;
-    @NotNull(message = "I cannot be null")
-    @JsonProperty("I")
-    private int I;
-    @NotNull(message = "N cannot be null")
-    @JsonProperty("N")
-    private int N;
-    @NotNull(message = "S cannot be null")
-    @JsonProperty("S")
-    private int S;
-    @NotNull(message = "T cannot be null")
-    @JsonProperty("T")
-    private int T;
-    @NotNull(message = "F cannot be null")
-    @JsonProperty("F")
-    private int F;
-    @NotNull(message = "P cannot be null")
-    @JsonProperty("P")
-    private int P;
-    @NotNull(message = "J cannot be null")
-    @JsonProperty("J")
-    private int J;
+    @NotNull(message = "EXTROVERSION cannot be null")
+    @JsonProperty("EXTROVERSION")
+    private int EXTROVERSION;
+    @NotNull(message = "INTROVERSION cannot be null")
+    @JsonProperty("INTROVERSION")
+    private int INTROVERSION;
+    @NotNull(message = "INTUITION cannot be null")
+    @JsonProperty("INTUITION")
+    private int INTUITION;
+    @NotNull(message = "SENSING cannot be null")
+    @JsonProperty("SENSING")
+    private int SENSING;
+    @NotNull(message = "THINKING cannot be null")
+    @JsonProperty("THINKING")
+    private int THINKING;
+    @NotNull(message = "FEELING cannot be null")
+    @JsonProperty("FEELING")
+    private int FEELING;
+    @NotNull(message = "PERCEIVING cannot be null")
+    @JsonProperty("PERCEIVING")
+    private int PERCEIVING;
+    @NotNull(message = "JUDGING cannot be null")
+    @JsonProperty("JUDGING")
+    private int JUDGING;
 }
