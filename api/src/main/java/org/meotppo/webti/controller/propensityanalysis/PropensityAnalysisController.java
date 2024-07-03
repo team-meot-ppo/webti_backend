@@ -5,7 +5,7 @@ import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 import java.util.List;
 
 import org.meotppo.webti.dto.propensityanalysis.PropensityAnalysisDto;
-import org.meotppo.webti.dto.propensityanalysis.PropensityProfileResponseDto;
+import org.meotppo.webti.domain.dto.propensityanalysis.PropensityProfileResponseDto;
 import org.meotppo.webti.dto.propensityanalysis.PropensityQuestionDto;
 import org.meotppo.webti.response.ResponseBody;
 import org.meotppo.webti.service.propensityanalysis.PropensityAnalysisService;

@@ -1,9 +1,9 @@
-package org.meotppo.webti.dto.file;
+package org.meotppo.webti.domain.dto.file;
 
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class ImageDto {
     private String url;
 
