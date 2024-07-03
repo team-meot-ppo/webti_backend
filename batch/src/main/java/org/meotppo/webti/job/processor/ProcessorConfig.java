@@ -16,10 +16,8 @@ public class ProcessorConfig {
 
     public static final String STATISTIC_PROCESSOR = "statisticProcessor";
 
-    private final WebDeveloperProfileRepository webDeveloperProfileRepository;
-
     @Bean(name = STATISTIC_PROCESSOR)
-    public ItemProcessor<TestResult, Statistic> statisticProcessor() {
+    public ItemProcessor<TestResult, Statistic> statisticProcessor(WebDeveloperProfileRepository webDeveloperProfileRepository) {
         return item -> {
             WebDeveloperProfile profile = webDeveloperProfileRepository.findByMbtiType(item.getMbtiType())
                     .orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + item.getMbtiType()));
