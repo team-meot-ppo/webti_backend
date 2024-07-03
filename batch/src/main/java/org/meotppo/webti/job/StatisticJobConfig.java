@@ -67,6 +67,7 @@ public class StatisticJobConfig {
     public Job statisticJobNew(@Qualifier(STATISTIC_STEP_NEW) Step statisticStepNew,
                                @Qualifier(CLEANUP_STEP) Step cleanupStep) {
         return new JobBuilder(STATISTIC_JOB_NEW, jobRepository)
+                .incrementer(new RunIdIncrementer())
                 .start(statisticStepNew)
                 .next(cleanupStep)
                 .build();
