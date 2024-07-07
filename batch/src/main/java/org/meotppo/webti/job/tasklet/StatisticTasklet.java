@@ -15,9 +15,12 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.ConditionalOperators;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Component;
-import java.util.List;
 
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
+import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 
 @Component
 public class StatisticTasklet implements Tasklet {
@@ -48,19 +51,28 @@ public class StatisticTasklet implements Tasklet {
     }
 
     private void processDocument(Document result) {
-        String mbtiTypeString = result.getString("_id");
-        MbtiType mbtiType = MbtiType.valueOf(mbtiTypeString);
-        Long count = getLongValue(result, "count");
-        Long matchCount = getLongValue(result, "matchCount");
+        MbtiType mbtiType = getMbtiType(result, "_id").orElseThrow(() -> new IllegalArgumentException("MBTI type is missing or invalid"));
+        Long count = getLongValue(result, "count").orElseThrow(() -> new IllegalArgumentException("Count is missing"));
+        Long matchCount = getLongValue(result, "matchCount").orElseThrow(() -> new IllegalArgumentException("Match count is missing"));
         WebDeveloperProfile profile = profileRepository.findByMbtiType(mbtiType).orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + mbtiType));
 
-        Statistic existing = statisticRepository.findByDeveloperProfile(profile)
-                .orElseGet(() -> new Statistic(profile, 0L, 0L));
+        Statistic existing = statisticRepository.findByDeveloperProfile(profile).orElseGet(() -> new Statistic(profile, 0L, 0L));
         existing.updateCount(existing.getCount() + count);
         existing.updateMatchCount(existing.getMatchCount() + matchCount);
     }
 
-    private Long getLongValue(Document document, String key) {
-        return document.get(key, Number.class).longValue();
+    private Optional<MbtiType> getMbtiType(Document document, String key) {
+        return Optional.ofNullable(document.getString(key))
+                .map(mbtiTypeString -> {
+                    try {
+                        return MbtiType.valueOf(mbtiTypeString);
+                    } catch (IllegalArgumentException e) {
+                        return null;
+                    }
+                });
+    }
+
+    private Optional<Long> getLongValue(Document document, String key) {
+        return Optional.ofNullable(document.get(key, Number.class)).map(Number::longValue);
     }
 }
