@@ -1,5 +1,10 @@
 package org.meotppo.webti.job.tasklet;
 
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
+
+import java.util.List;
+import java.util.Optional;
 import org.bson.Document;
 import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
@@ -15,12 +20,6 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.ConditionalOperators;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 
 @Component
 public class StatisticTasklet implements Tasklet {
@@ -56,7 +55,8 @@ public class StatisticTasklet implements Tasklet {
         Long matchCount = getLongValue(result, "matchCount").orElseThrow(() -> new IllegalArgumentException("Match count is missing"));
         WebDeveloperProfile profile = profileRepository.findByMbtiType(mbtiType).orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + mbtiType));
 
-        Statistic existing = statisticRepository.findByDeveloperProfile(profile).orElseGet(() -> new Statistic(profile, 0L, 0L));
+        Statistic existing = statisticRepository.findByDeveloperProfile(profile)
+                .orElseThrow(() -> new RuntimeException("Statistic not found for developer profile: " + profile));
         existing.updateCount(existing.getCount() + count);
         existing.updateMatchCount(existing.getMatchCount() + matchCount);
     }

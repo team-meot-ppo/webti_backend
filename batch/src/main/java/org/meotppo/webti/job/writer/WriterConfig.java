@@ -13,14 +13,11 @@ public class WriterConfig {
 
     @Bean(name = STATISTIC_WRITER)
     public ItemWriter<Statistic> statisticWriter(StatisticRepository statisticRepository) {
-        return items -> {
-            for (Statistic item : items) {
-                Statistic existing = statisticRepository.findByDeveloperProfile(item.getDeveloperProfile())
-                        .orElse(new Statistic(item.getDeveloperProfile(), 0L, 0L));
-                existing.updateCount(existing.getCount() + item.getCount());
-                existing.updateMatchCount(existing.getMatchCount() + item.getMatchCount());
-                statisticRepository.save(existing);
-            }
-        };
+        return items -> items.forEach(item -> {
+            Statistic existing = statisticRepository.findByDeveloperProfile(item.getDeveloperProfile())
+                    .orElseThrow(() -> new RuntimeException("Statistic not found for developer profile: " + item.getDeveloperProfile()));
+            existing.updateCount(existing.getCount() + item.getCount());
+            existing.updateMatchCount(existing.getMatchCount() + item.getMatchCount());
+        });
     }
 }
