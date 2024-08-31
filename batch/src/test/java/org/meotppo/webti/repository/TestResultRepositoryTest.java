@@ -1,4 +1,4 @@
-package org.meotppo.webti;
+package org.meotppo.webti.repository;
 
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
