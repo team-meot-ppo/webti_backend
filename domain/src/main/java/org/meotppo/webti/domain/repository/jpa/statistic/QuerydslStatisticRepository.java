@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.repository.jpa.statistics;
+package org.meotppo.webti.domain.repository.jpa.statistic;
 
 import org.meotppo.webti.domain.dto.result.StatisticDTO;
 

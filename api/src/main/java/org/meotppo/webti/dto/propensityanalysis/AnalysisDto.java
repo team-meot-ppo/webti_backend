@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 @Getter
-public class PropensityAnalysisDto {
+public class AnalysisDto {
     @NotNull(message = "EXTROVERSION cannot be null")
     @JsonProperty("EXTROVERSION")
     private int EXTROVERSION;

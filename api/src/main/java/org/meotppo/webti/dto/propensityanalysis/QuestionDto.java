@@ -6,12 +6,12 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class PropensityQuestionDto {
+public class QuestionDto {
     private String question;
     private List<PropensityOptionDto> options;
 
     @Builder
-    public PropensityQuestionDto(String question, List<PropensityOptionDto> options) {
+    public QuestionDto(String question, List<PropensityOptionDto> options) {
         this.question = question;
         this.options = options;
     }

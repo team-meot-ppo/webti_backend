@@ -1,6 +1,6 @@
 package org.meotppo.webti.job;
 
-import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
+import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
 import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
 import org.meotppo.webti.job.tasklet.CleanupTasklet;
 import org.meotppo.webti.job.tasklet.StatisticTasklet;

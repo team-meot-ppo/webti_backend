@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.entity.jpa.statistics;
+package org.meotppo.webti.domain.entity.jpa.statistic;
 
 import jakarta.persistence.*;
 import lombok.Builder;

@@ -3,7 +3,7 @@ package org.meotppo.webti.job.processor;
 import lombok.RequiredArgsConstructor;
 
 import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
-import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
+import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
 import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
 import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
 import org.springframework.batch.item.ItemProcessor;

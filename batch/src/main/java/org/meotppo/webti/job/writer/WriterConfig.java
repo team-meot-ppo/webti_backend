@@ -1,7 +1,7 @@
 package org.meotppo.webti.job.writer;
 
-import org.meotppo.webti.domain.entity.jpa.statistics.Statistic;
-import org.meotppo.webti.domain.repository.jpa.statistics.StatisticRepository;
+import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
+import org.meotppo.webti.domain.repository.jpa.statistic.StatisticRepository;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,14 +1,13 @@
-package org.meotppo.webti.domain.repository.jpa.statistics;
+package org.meotppo.webti.domain.repository.jpa.statistic;
 
+
+import static org.meotppo.webti.domain.entity.jpa.statistic.QStatistic.statistic;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.meotppo.webti.domain.dto.result.QStatisticDTO;
 import org.meotppo.webti.domain.dto.result.StatisticDTO;
-
-import java.util.List;
-
-import static org.meotppo.webti.domain.entity.jpa.statistics.QStatistic.statistic;
 
 @RequiredArgsConstructor
 public class StatisticRepositoryImpl implements QuerydslStatisticRepository {

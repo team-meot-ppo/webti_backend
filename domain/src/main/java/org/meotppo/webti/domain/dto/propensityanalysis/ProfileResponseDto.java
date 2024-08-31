@@ -7,14 +7,14 @@ import org.meotppo.webti.domain.entity.type.MbtiType;
 import lombok.Builder;
 
 @Data
-public class PropensityProfileResponseDto {
+public class ProfileResponseDto {
     private String result;
     private String description;
     private MbtiType mbtiType;
     private ImageDto imageDto;
 
     @Builder
-    public PropensityProfileResponseDto(String result, String description, MbtiType mbtiType, String imageUrl) {
+    public ProfileResponseDto(String result, String description, MbtiType mbtiType, String imageUrl) {
         this.result = result;
         this.description = description;
         this.mbtiType = mbtiType;
