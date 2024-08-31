@@ -1,7 +1,6 @@
 package org.meotppo.webti.job.processor;
 
 import lombok.RequiredArgsConstructor;
-
 import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
 import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
@@ -17,10 +16,12 @@ public class ProcessorConfig {
     public static final String STATISTIC_PROCESSOR = "statisticProcessor";
 
     @Bean(name = STATISTIC_PROCESSOR)
-    public ItemProcessor<TestResult, Statistic> statisticProcessor(WebDeveloperProfileRepository webDeveloperProfileRepository) {
+    public ItemProcessor<TestResult, Statistic> statisticProcessor(
+            WebDeveloperProfileRepository webDeveloperProfileRepository) {
         return item -> {
             WebDeveloperProfile profile = webDeveloperProfileRepository.findByMbtiType(item.getMbtiType())
-                    .orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + item.getMbtiType()));
+                    .orElseThrow(
+                            () -> new IllegalArgumentException("No profile found for type: " + item.getMbtiType()));
 
             return Statistic.builder()
                     .developerProfile(profile)

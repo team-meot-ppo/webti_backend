@@ -1,5 +1,10 @@
 package org.meotppo.webti.config;
 
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import javax.sql.DataSource;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
@@ -14,12 +19,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import javax.sql.DataSource;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 @Slf4j
 public class EntityManagerFactoryCreator {
 
@@ -32,7 +31,10 @@ public class EntityManagerFactoryCreator {
     private final String persistenceUnit;
 
     @Builder
-    public EntityManagerFactoryCreator(JpaProperties properties, HibernateProperties hibernateProperties, ObjectProvider<Collection<DataSourcePoolMetadataProvider>> metadataProviders, EntityManagerFactoryBuilder entityManagerFactoryBuilder, DataSource dataSource, String packages, String persistenceUnit) {
+    public EntityManagerFactoryCreator(JpaProperties properties, HibernateProperties hibernateProperties,
+                                       ObjectProvider<Collection<DataSourcePoolMetadataProvider>> metadataProviders,
+                                       EntityManagerFactoryBuilder entityManagerFactoryBuilder, DataSource dataSource,
+                                       String packages, String persistenceUnit) {
         this.properties = properties;
         this.hibernateProperties = hibernateProperties;
         this.metadataProviders = metadataProviders;
@@ -42,7 +44,7 @@ public class EntityManagerFactoryCreator {
         this.persistenceUnit = persistenceUnit;
     }
 
-    public LocalContainerEntityManagerFactoryBean create () {
+    public LocalContainerEntityManagerFactoryBean create() {
         Map<String, Object> vendorProperties = getVendorProperties();
         customizeVendorProperties(vendorProperties);
         return entityManagerFactoryBuilder
@@ -78,7 +80,8 @@ public class EntityManagerFactoryCreator {
     }
 
     private boolean isDataSourceAutoCommitDisabled() {
-        DataSourcePoolMetadataProvider poolMetadataProvider = new CompositeDataSourcePoolMetadataProvider(metadataProviders.getIfAvailable());
+        DataSourcePoolMetadataProvider poolMetadataProvider = new CompositeDataSourcePoolMetadataProvider(
+                metadataProviders.getIfAvailable());
         DataSourcePoolMetadata poolMetadata = poolMetadataProvider.getDataSourcePoolMetadata(this.dataSource);
         return poolMetadata != null && Boolean.FALSE.equals(poolMetadata.getDefaultAutoCommit());
     }

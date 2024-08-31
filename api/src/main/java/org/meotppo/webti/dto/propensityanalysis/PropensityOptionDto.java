@@ -1,9 +1,8 @@
 package org.meotppo.webti.dto.propensityanalysis;
 
-import org.meotppo.webti.domain.entity.type.PersonalityType;
-
 import lombok.Builder;
 import lombok.Getter;
+import org.meotppo.webti.domain.entity.type.PersonalityType;
 
 @Getter
 public class PropensityOptionDto {

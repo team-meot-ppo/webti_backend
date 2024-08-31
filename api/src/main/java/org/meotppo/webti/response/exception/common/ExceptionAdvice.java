@@ -1,6 +1,8 @@
 package org.meotppo.webti.response.exception.common;
 
 
+import static org.meotppo.webti.response.ResponseUtil.createFailureResponse;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.meotppo.webti.response.ResponseBody;
@@ -8,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import static org.meotppo.webti.response.ResponseUtil.createFailureResponse;
 
 
 @RestControllerAdvice
@@ -28,7 +28,8 @@ public class ExceptionAdvice {
     public ResponseEntity<ResponseBody<Void>> methodArgumentNotValidException(MethodArgumentNotValidException e) {
         return ResponseEntity
                 .status(ExceptionType.BIND_EXCEPTION.getStatus())
-                .body(createFailureResponse(ExceptionType.BIND_EXCEPTION, e.getBindingResult().getAllErrors().get(0).getDefaultMessage()));
+                .body(createFailureResponse(ExceptionType.BIND_EXCEPTION,
+                        e.getBindingResult().getAllErrors().get(0).getDefaultMessage()));
     }
 
     @ExceptionHandler(Exception.class)

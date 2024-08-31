@@ -1,5 +1,11 @@
 package org.meotppo.webti.config;
 
+import static org.meotppo.webti.config.DataSourceConfig.DOMAIN_DATASOURCE;
+import static org.meotppo.webti.config.DataSourceConfig.META_DATASOURCE;
+
+import java.util.Collection;
+import java.util.Objects;
+import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,12 +21,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
-import javax.sql.DataSource;
-import java.util.Collection;
-import java.util.Objects;
-
-import static org.meotppo.webti.config.DataSourceConfig.DOMAIN_DATASOURCE;
-import static org.meotppo.webti.config.DataSourceConfig.META_DATASOURCE;
 
 @Configuration
 @RequiredArgsConstructor
@@ -43,7 +43,8 @@ public class TransactionManagerConfig {
 
 
     @Bean(name = DOMAIN_ENTITY_MANAGER_FACTORY)
-    public LocalContainerEntityManagerFactoryBean domainEntityManagerFactory(@Qualifier(DOMAIN_DATASOURCE) DataSource dataSource)  {
+    public LocalContainerEntityManagerFactoryBean domainEntityManagerFactory(
+            @Qualifier(DOMAIN_DATASOURCE) DataSource dataSource) {
         return EntityManagerFactoryCreator.builder()
                 .properties(jpaProperties)
                 .hibernateProperties(hibernateProperties)
@@ -57,15 +58,17 @@ public class TransactionManagerConfig {
     }
 
     @Bean(name = DOMAIN_TRANSACTION_MANAGER)
-    public PlatformTransactionManager domainTransactionManager(@Qualifier(DOMAIN_ENTITY_MANAGER_FACTORY) LocalContainerEntityManagerFactoryBean entityManagerFactory) {
+    public PlatformTransactionManager domainTransactionManager(
+            @Qualifier(DOMAIN_ENTITY_MANAGER_FACTORY) LocalContainerEntityManagerFactoryBean entityManagerFactory) {
         return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactory.getObject()));
     }
 
     @Configuration
     @EnableJpaRepositories(
             basePackages = "org.meotppo.webti.domain.repository.jpa"
-            ,entityManagerFactoryRef = DOMAIN_ENTITY_MANAGER_FACTORY
-            ,transactionManagerRef = DOMAIN_TRANSACTION_MANAGER
+            , entityManagerFactoryRef = DOMAIN_ENTITY_MANAGER_FACTORY
+            , transactionManagerRef = DOMAIN_TRANSACTION_MANAGER
     )
-    public static class DomainJpaRepositoriesConfig{}
+    public static class DomainJpaRepositoriesConfig {
+    }
 }

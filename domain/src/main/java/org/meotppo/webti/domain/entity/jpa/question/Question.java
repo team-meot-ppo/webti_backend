@@ -1,9 +1,5 @@
 package org.meotppo.webti.domain.entity.jpa.question;
 
-import java.util.List;
-
-import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,9 +7,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
 
 @Getter
 @Entity
@@ -22,7 +20,7 @@ public class Question extends JpaEntityDate { // 질문과 답변을 프론트�
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(length = 500, nullable = false)
     private String question;
 

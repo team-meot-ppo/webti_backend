@@ -1,5 +1,7 @@
 package org.meotppo.webti.controller.status;
 
+import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.meotppo.webti.log.aop.NotLogging;
 import org.meotppo.webti.response.ResponseBody;
@@ -8,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 
 @RestController
 @RequiredArgsConstructor

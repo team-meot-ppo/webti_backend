@@ -1,7 +1,5 @@
 package org.meotppo.webti.domain.entity.jpa.question;
 
-import org.meotppo.webti.domain.entity.type.PersonalityType;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.meotppo.webti.domain.entity.type.PersonalityType;
 
 @Getter
 @Entity
@@ -29,7 +28,7 @@ public class Option {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private PersonalityType personalityType; 
+    private PersonalityType personalityType;
 
     @Column(nullable = false)
     private int score;

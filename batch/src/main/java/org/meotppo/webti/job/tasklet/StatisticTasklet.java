@@ -28,7 +28,8 @@ public class StatisticTasklet implements Tasklet {
     private final StatisticRepository statisticRepository;
     private final org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository profileRepository;
 
-    public StatisticTasklet(MongoTemplate mongoTemplate, StatisticRepository statisticRepository, org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository profileRepository) {
+    public StatisticTasklet(MongoTemplate mongoTemplate, StatisticRepository statisticRepository,
+                            org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository profileRepository) {
         this.mongoTemplate = mongoTemplate;
         this.statisticRepository = statisticRepository;
         this.profileRepository = profileRepository;
@@ -39,7 +40,8 @@ public class StatisticTasklet implements Tasklet {
         Aggregation aggregation = newAggregation(
                 group("mbtiType")
                         .count().as("count")
-                        .sum(ConditionalOperators.when(Criteria.where("match").is(true)).then(1).otherwise(0)).as("matchCount")
+                        .sum(ConditionalOperators.when(Criteria.where("match").is(true)).then(1).otherwise(0))
+                        .as("matchCount")
         );
         AggregationResults<Document> results = mongoTemplate.aggregate(aggregation, "test_result", Document.class);
 
@@ -50,10 +52,13 @@ public class StatisticTasklet implements Tasklet {
     }
 
     private void processDocument(Document result) {
-        MbtiType mbtiType = getMbtiType(result, "_id").orElseThrow(() -> new IllegalArgumentException("MBTI type is missing or invalid"));
+        MbtiType mbtiType = getMbtiType(result, "_id").orElseThrow(
+                () -> new IllegalArgumentException("MBTI type is missing or invalid"));
         Long count = getLongValue(result, "count").orElseThrow(() -> new IllegalArgumentException("Count is missing"));
-        Long matchCount = getLongValue(result, "matchCount").orElseThrow(() -> new IllegalArgumentException("Match count is missing"));
-        WebDeveloperProfile profile = profileRepository.findByMbtiType(mbtiType).orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + mbtiType));
+        Long matchCount = getLongValue(result, "matchCount").orElseThrow(
+                () -> new IllegalArgumentException("Match count is missing"));
+        WebDeveloperProfile profile = profileRepository.findByMbtiType(mbtiType)
+                .orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + mbtiType));
 
         Statistic existing = statisticRepository.findByDeveloperProfile(profile)
                 .orElseThrow(() -> new RuntimeException("Statistic not found for developer profile: " + profile));

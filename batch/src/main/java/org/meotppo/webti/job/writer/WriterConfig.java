@@ -15,7 +15,8 @@ public class WriterConfig {
     public ItemWriter<Statistic> statisticWriter(StatisticRepository statisticRepository) {
         return items -> items.forEach(item -> {
             Statistic existing = statisticRepository.findByDeveloperProfile(item.getDeveloperProfile())
-                    .orElseThrow(() -> new RuntimeException("Statistic not found for developer profile: " + item.getDeveloperProfile()));
+                    .orElseThrow(() -> new RuntimeException(
+                            "Statistic not found for developer profile: " + item.getDeveloperProfile()));
             existing.updateCount(existing.getCount() + item.getCount());
             existing.updateMatchCount(existing.getMatchCount() + item.getMatchCount());
         });

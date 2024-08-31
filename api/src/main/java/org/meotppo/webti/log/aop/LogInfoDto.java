@@ -1,8 +1,13 @@
 package org.meotppo.webti.log.aop;
 
+import static org.meotppo.webti.log.filter.MDCFilter.REQUEST_ID;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,12 +15,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.MDC;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.meotppo.webti.log.filter.MDCFilter.REQUEST_ID;
 
 @Data
 @AllArgsConstructor

@@ -1,13 +1,21 @@
 package org.meotppo.webti.domain.entity.jpa.developerprofile;
 
-import jakarta.persistence.*;
-import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
-import org.meotppo.webti.domain.entity.jpa.file.Image;
-import org.meotppo.webti.domain.entity.type.MbtiType;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
+import org.meotppo.webti.domain.entity.jpa.file.Image;
+import org.meotppo.webti.domain.entity.type.MbtiType;
 
 @Entity
 @Getter

@@ -1,10 +1,9 @@
 package org.meotppo.webti.domain.dto.propensityanalysis;
 
+import lombok.Builder;
 import lombok.Data;
 import org.meotppo.webti.domain.dto.file.ImageDto;
 import org.meotppo.webti.domain.entity.type.MbtiType;
-
-import lombok.Builder;
 
 @Data
 public class ProfileResponseDto {

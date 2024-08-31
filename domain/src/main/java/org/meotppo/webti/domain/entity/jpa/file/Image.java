@@ -13,7 +13,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Image {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "file_id")
     private Long id;
 
