@@ -16,7 +16,6 @@ import org.springframework.boot.jdbc.metadata.DataSourcePoolMetadataProvider;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -61,14 +60,5 @@ public class TransactionManagerConfig {
     public PlatformTransactionManager domainTransactionManager(
             @Qualifier(DOMAIN_ENTITY_MANAGER_FACTORY) LocalContainerEntityManagerFactoryBean entityManagerFactory) {
         return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactory.getObject()));
-    }
-
-    @Configuration
-    @EnableJpaRepositories(
-            basePackages = "org.meotppo.webti.domain.repository.jpa"
-            , entityManagerFactoryRef = DOMAIN_ENTITY_MANAGER_FACTORY
-            , transactionManagerRef = DOMAIN_TRANSACTION_MANAGER
-    )
-    public static class DomainJpaRepositoriesConfig {
     }
 }
