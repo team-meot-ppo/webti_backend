@@ -1,10 +1,10 @@
 package org.meotppo.webti.job.processor;
 
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.profile.Profile;
 import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
 import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
-import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
+import org.meotppo.webti.domain.repository.jpa.developertype.ProfileRepository;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +17,9 @@ public class ProcessorConfig {
 
     @Bean(name = STATISTIC_PROCESSOR)
     public ItemProcessor<TestResult, Statistic> statisticProcessor(
-            WebDeveloperProfileRepository webDeveloperProfileRepository) {
+            ProfileRepository profileRepository) {
         return item -> {
-            WebDeveloperProfile profile = webDeveloperProfileRepository.findByMbtiType(item.getMbtiType())
+            Profile profile = profileRepository.findByMbtiType(item.getMbtiType())
                     .orElseThrow(
                             () -> new IllegalArgumentException("No profile found for type: " + item.getMbtiType()));
 

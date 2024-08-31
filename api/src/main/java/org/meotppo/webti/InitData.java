@@ -4,27 +4,26 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
 import org.meotppo.webti.domain.entity.jpa.file.Image;
+import org.meotppo.webti.domain.entity.jpa.profile.Profile;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.entity.type.PersonalityType;
-import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
+import org.meotppo.webti.domain.repository.jpa.developertype.ProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
 import org.meotppo.webti.domain.repository.jpa.statistic.StatisticRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @RequiredArgsConstructor
-@Profile("local")
+@org.springframework.context.annotation.Profile("local")
 public class InitData {
-    private final WebDeveloperProfileRepository webDeveloperProfileRepository;
+    private final ProfileRepository profileRepository;
     private final QuestionRepository questionRepository;
     private final StatisticRepository statisticRepository;
 
@@ -48,8 +47,8 @@ public class InitData {
         String ISTJImage = "https://webti-imagebucket.s3.eu-north-1.amazonaws.com/ISTJ.webp";
         String ISTPImage = "https://webti-imagebucket.s3.eu-north-1.amazonaws.com/ISTP.webp";
 
-        List<WebDeveloperProfile> profileData = Arrays.asList(
-                WebDeveloperProfile.builder()
+        List<Profile> profileData = Arrays.asList(
+                Profile.builder()
                         .mbtiType(MbtiType.ISTJ)
                         .result("철저한 데이터 관리형 백엔드 개발자")
                         .description(
@@ -58,7 +57,7 @@ public class InitData {
                                 .url(ISTJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.INTJ)
                         .result("전략적 시스템 설계형 백엔드 개발자")
                         .description(
@@ -67,7 +66,7 @@ public class InitData {
                                 .url(INTJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ISTP)
                         .result("효율적인 문제 해결형 백엔드 개발자")
                         .description(
@@ -76,7 +75,7 @@ public class InitData {
                                 .url(ISTPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.INTP)
                         .result("혁신적인 알고리즘 전문가 백엔드 개발자")
                         .description(
@@ -85,7 +84,7 @@ public class InitData {
                                 .url(INTPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ESTJ)
                         .result("실행력 강한 관리자형 백엔드 개발자")
                         .description(
@@ -94,7 +93,7 @@ public class InitData {
                                 .url(ESTJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ISFJ)
                         .result("섬세한 사용자 경험 디자이너형 프론트 엔드 개발자")
                         .description(
@@ -103,7 +102,7 @@ public class InitData {
                                 .url(ISFJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ESFP)
                         .result("창의적인 인터페이스 디자이너형 프론트엔드 개발자")
                         .description(
@@ -112,7 +111,7 @@ public class InitData {
                                 .url(ESFPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ENFP)
                         .result("혁신적인 UX/UI 전문가형 프론트엔드 개발자")
                         .description(
@@ -121,7 +120,7 @@ public class InitData {
                                 .url(ENFPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ISFP)
                         .result("디테일에 강한 시각 예술가형 프론트엔드 개발자")
                         .description(
@@ -130,7 +129,7 @@ public class InitData {
                                 .url(ISFPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.INFP)
                         .result("공감하는 이야기꾼형 프론트엔드 개발자")
                         .description(
@@ -139,7 +138,7 @@ public class InitData {
                                 .url(INFPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ESFJ)
                         .result("사용자 중심 인터페이스 개발자형 프론트엔드 개발자")
                         .description(
@@ -148,7 +147,7 @@ public class InitData {
                                 .url(ESFJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.INFJ)
                         .result("전체 비전을 갖춘 개발자형 풀스택 개발자")
                         .description(
@@ -157,7 +156,7 @@ public class InitData {
                                 .url(INFJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ENTP)
                         .result("다양한 기술을 아우르는 문제 해결사형 풀스택 개발자")
                         .description(
@@ -166,7 +165,7 @@ public class InitData {
                                 .url(ENTPImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ENFJ)
                         .result("협력과 조정을 이끄는 개발자형 풀스택 개발자")
                         .description(
@@ -175,7 +174,7 @@ public class InitData {
                                 .url(ENFJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ENTJ)
                         .result("전략적 프로젝트 리더형 풀스택 개발자")
                         .description(
@@ -184,7 +183,7 @@ public class InitData {
                                 .url(ENTJImage)
                                 .build())
                         .build(),
-                WebDeveloperProfile.builder()
+                Profile.builder()
                         .mbtiType(MbtiType.ESTP)
                         .result("유연하고 즉흥적인 개발자형 풀스택 개발자")
                         .description(
@@ -195,7 +194,7 @@ public class InitData {
                         .build()
         );
 
-        webDeveloperProfileRepository.saveAll(profileData);
+        profileRepository.saveAll(profileData);
 
         List<Question> questionData = Arrays.asList(
                 Question.builder()

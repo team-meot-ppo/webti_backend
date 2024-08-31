@@ -3,15 +3,15 @@ package org.meotppo.webti.service.propensityanalysis;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.domain.dto.propensityanalysis.ProfileResponseDto;
+import org.meotppo.webti.domain.dto.analysis.ProfileResponseDto;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.type.MbtiType;
-import org.meotppo.webti.domain.repository.jpa.developertype.WebDeveloperProfileRepository;
+import org.meotppo.webti.domain.repository.jpa.developertype.ProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
-import org.meotppo.webti.dto.propensityanalysis.AnalysisDto;
-import org.meotppo.webti.dto.propensityanalysis.PropensityOptionDto;
-import org.meotppo.webti.dto.propensityanalysis.QuestionDto;
+import org.meotppo.webti.dto.analysis.AnalysisRequest;
+import org.meotppo.webti.dto.analysis.PropensityOptionDto;
+import org.meotppo.webti.dto.analysis.QuestionDto;
 import org.meotppo.webti.response.exception.common.WebDeveloperProfileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,22 +20,20 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class AnalysisService {
-    private final WebDeveloperProfileRepository webDeveloperProfileRepository;
+
+    private final ProfileRepository profileRepository;
     private final QuestionRepository questionRepository;
 
-    public ProfileResponseDto analyzeType(AnalysisDto analysisDto) {
-        StringBuilder type = new StringBuilder();
+    public ProfileResponseDto analyzeType(AnalysisRequest analysisRequest) {
 
-        type.append(analysisDto.getEXTROVERSION() > analysisDto.getINTROVERSION() ? "E" : "I");
-        type.append(analysisDto.getSENSING() > analysisDto.getINTUITION() ? "S" : "N");
-        type.append(analysisDto.getTHINKING() > analysisDto.getFEELING() ? "T" : "F");
-        type.append(analysisDto.getJUDGING() > analysisDto.getPERCEIVING() ? "J" : "P");
+        String type = (analysisRequest.getEXTROVERSION() > analysisRequest.getINTROVERSION() ? "E" : "I")
+                + (analysisRequest.getSENSING() > analysisRequest.getINTUITION() ? "S" : "N")
+                + (analysisRequest.getTHINKING() > analysisRequest.getFEELING() ? "T" : "F")
+                + (analysisRequest.getJUDGING() > analysisRequest.getPERCEIVING() ? "J" : "P");
 
-        ProfileResponseDto developerProfile = webDeveloperProfileRepository.findProfileByMbtiType(
-                        MbtiType.valueOf(type.toString()))
-                .orElseThrow(() -> new WebDeveloperProfileNotFoundException());
-
-        return developerProfile;
+        return profileRepository.findProfileByMbtiType(
+                        MbtiType.valueOf(type))
+                .orElseThrow(WebDeveloperProfileNotFoundException::new);
     }
 
     public List<QuestionDto> getPropensityQuestions() {

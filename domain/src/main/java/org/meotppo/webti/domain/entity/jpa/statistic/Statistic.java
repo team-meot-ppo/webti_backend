@@ -12,7 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.meotppo.webti.domain.entity.jpa.common.JpaEntityDate;
-import org.meotppo.webti.domain.entity.jpa.developerprofile.WebDeveloperProfile;
+import org.meotppo.webti.domain.entity.jpa.profile.Profile;
 
 @Getter
 @Entity
@@ -25,7 +25,7 @@ public class Statistic extends JpaEntityDate {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "developer_profile_id", nullable = false)
-    private WebDeveloperProfile developerProfile;
+    private Profile developerProfile;
 
     @Column(nullable = false)
     private Long count;
@@ -34,7 +34,7 @@ public class Statistic extends JpaEntityDate {
     private Long matchCount;
 
     @Builder
-    public Statistic(WebDeveloperProfile developerProfile, Long count, Long matchCount) {
+    public Statistic(Profile developerProfile, Long count, Long matchCount) {
         this.developerProfile = developerProfile;
         this.count = count;
         this.matchCount = matchCount;

@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.entity.jpa.developerprofile;
+package org.meotppo.webti.domain.entity.jpa.profile;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -20,7 +20,8 @@ import org.meotppo.webti.domain.entity.type.MbtiType;
 @Entity
 @Getter
 @NoArgsConstructor
-public class WebDeveloperProfile extends JpaEntityDate {
+public class Profile extends JpaEntityDate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,7 +41,7 @@ public class WebDeveloperProfile extends JpaEntityDate {
     private Image image;
 
     @Builder
-    public WebDeveloperProfile(MbtiType mbtiType, String result, String description, Image image) {
+    public Profile(MbtiType mbtiType, String result, String description, Image image) {
         this.mbtiType = mbtiType;
         this.result = result;
         this.description = description;

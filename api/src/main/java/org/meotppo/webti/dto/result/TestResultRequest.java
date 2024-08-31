@@ -1,12 +1,14 @@
 package org.meotppo.webti.dto.result;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 
 @Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TestResultRequest {
 
     @NotNull(message = "MBTI type cannot be null")

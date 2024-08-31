@@ -11,10 +11,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-
+@Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
-@Slf4j
 public class ExceptionAdvice {
 
     @ExceptionHandler(BusinessException.class)
@@ -34,7 +33,7 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseBody<Void>> exception(Exception e) {
-        log.error("Exception Message: {} ", e.getMessage());
+        log.error(e.getMessage(), e);
         return ResponseEntity
                 .status(ExceptionType.EXCEPTION.getStatus())
                 .body(createFailureResponse(ExceptionType.EXCEPTION));

@@ -5,9 +5,9 @@ import static org.meotppo.webti.response.ResponseUtil.createSuccessResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.domain.dto.propensityanalysis.ProfileResponseDto;
-import org.meotppo.webti.dto.propensityanalysis.AnalysisDto;
-import org.meotppo.webti.dto.propensityanalysis.QuestionDto;
+import org.meotppo.webti.domain.dto.analysis.ProfileResponseDto;
+import org.meotppo.webti.dto.analysis.AnalysisRequest;
+import org.meotppo.webti.dto.analysis.QuestionDto;
 import org.meotppo.webti.response.ResponseBody;
 import org.meotppo.webti.service.propensityanalysis.AnalysisService;
 import org.springframework.http.HttpStatus;
@@ -27,8 +27,8 @@ public class AnalysisController {
 
     @PostMapping("/result")
     public ResponseEntity<ResponseBody<ProfileResponseDto>> propensityAnalysis(
-            @RequestBody @Valid AnalysisDto analysisDto) {
-        ProfileResponseDto responseDto = analysisService.analyzeType(analysisDto);
+            @RequestBody @Valid AnalysisRequest analysisRequest) {
+        ProfileResponseDto responseDto = analysisService.analyzeType(analysisRequest);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(createSuccessResponse(responseDto));

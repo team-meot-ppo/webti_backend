@@ -4,10 +4,13 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ExceptionType {
     EXCEPTION(INTERNAL_SERVER_ERROR, "E001", "An unexpected error has occurred."),
     BIND_EXCEPTION(BAD_REQUEST, "E002", "There was an error with the request binding."),
@@ -17,10 +20,4 @@ public enum ExceptionType {
     private final HttpStatus status;
     private final String code;
     private final String message;
-
-    ExceptionType(HttpStatus status, String code, String message) {
-        this.status = status;
-        this.code = code;
-        this.message = message;
-    }
 }
