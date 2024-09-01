@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @Getter
 public abstract class MongoEntityDate {
+
     @CreatedDate
     private LocalDateTime createdAt;
 
