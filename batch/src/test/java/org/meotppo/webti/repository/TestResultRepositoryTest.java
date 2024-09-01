@@ -1,6 +1,7 @@
 package org.meotppo.webti.repository;
 
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
+import static org.meotppo.webti.fixture.TestResultFixture.createTestResult;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,14 +29,11 @@ public class TestResultRepositoryTest {
     @Test
     void testSave() {
         // given
-        TestResult result = TestResult.builder()
-                .mbtiType(MbtiType.INFJ)
-                .match(true)
-                .build();
+        TestResult result = createTestResult(MbtiType.INFJ, true);
 
         // when
         testResultRepository.save(result);
-        TestResult foundResult = testResultRepository.findById(result.getId()).get();
+        TestResult foundResult = testResultRepository.findById(result.getId()).orElseThrow();
 
         // then
         assertSoftly(softly -> {
@@ -48,15 +46,8 @@ public class TestResultRepositoryTest {
     @Test
     void testDeleteAll() {
         // given
-        TestResult result1 = TestResult.builder()
-                .mbtiType(MbtiType.INFJ)
-                .match(true)
-                .build();
-
-        TestResult result2 = TestResult.builder()
-                .mbtiType(MbtiType.ENTP)
-                .match(false)
-                .build();
+        TestResult result1 = createTestResult(MbtiType.INFJ, true);
+        TestResult result2 = createTestResult(MbtiType.ENTP, false);
 
         testResultRepository.save(result1);
         testResultRepository.save(result2);
