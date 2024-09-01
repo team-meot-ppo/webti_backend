@@ -48,6 +48,8 @@ dependencies {
     testImplementation 'org.projectlombok:lombok' // Lombok for testing
     testAnnotationProcessor 'org.projectlombok:lombok' // Lombok for testing
     testRuntimeOnly 'com.h2database:h2' // H2 for testing
+    testImplementation 'de.bwaldvogel:mongo-java-server:1.45.0' // Mongo for testing
+    testImplementation(testFixtures(project(':domain'))) // Fixture for testing
 }
 
 

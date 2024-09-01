@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.meotppo.webti.domain.dto.analysis.ProfileResponseDto;
 import org.meotppo.webti.dto.analysis.AnalysisRequest;
 import org.meotppo.webti.dto.analysis.QuestionDto;
-import org.meotppo.webti.service.propensityanalysis.AnalysisService;
+import org.meotppo.webti.service.analysis.AnalysisService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

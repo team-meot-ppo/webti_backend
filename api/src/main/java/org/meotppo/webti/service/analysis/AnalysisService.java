@@ -1,4 +1,4 @@
-package org.meotppo.webti.service.propensityanalysis;
+package org.meotppo.webti.service.analysis;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
 import org.meotppo.webti.dto.analysis.AnalysisRequest;
 import org.meotppo.webti.dto.analysis.PropensityOptionDto;
 import org.meotppo.webti.dto.analysis.QuestionDto;
-import org.meotppo.webti.exception.WebDeveloperProfileNotFoundException;
+import org.meotppo.webti.exception.ProfileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +33,7 @@ public class AnalysisService {
 
         return profileRepository.findProfileByMbtiType(
                         MbtiType.valueOf(type))
-                .orElseThrow(WebDeveloperProfileNotFoundException::new);
+                .orElseThrow(ProfileNotFoundException::new);
     }
 
     public List<QuestionDto> getPropensityQuestions() {

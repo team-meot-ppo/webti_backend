@@ -19,10 +19,10 @@ public class ResultService {
     private final StatisticRepository statisticRepository;
 
     @Transactional
-    public void createTestResult(TestResultRequest req) {
+    public void createTestResult(TestResultRequest testResultRequest) {
         TestResult testResult = TestResult.builder()
-                .mbtiType(req.getMbtiType())
-                .match(req.getMatch())
+                .mbtiType(testResultRequest.getMbtiType())
+                .match(testResultRequest.getMatch())
                 .build();
         testResultRepository.save(testResult);
     }

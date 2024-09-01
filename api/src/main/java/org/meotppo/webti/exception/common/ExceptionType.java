@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 public enum ExceptionType {
     EXCEPTION(INTERNAL_SERVER_ERROR, "E001", "An unexpected error has occurred."),
     BIND_EXCEPTION(BAD_REQUEST, "E002", "There was an error with the request binding."),
-    WEB_DEVELOPER_PROFILE_NOT_FOUND(NOT_FOUND, "E003", "Web Developer Profile not found."),
+    PROFILE_NOT_FOUND_EXCEPTION(NOT_FOUND, "E003", "Web Developer Profile not found."),
     ;
 
     private final HttpStatus status;
