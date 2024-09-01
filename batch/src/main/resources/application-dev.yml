@@ -13,24 +13,14 @@ spring:
         jdbc-url: jdbc:postgresql://${dev-db.postgres.domain-db.host}:${dev-db.postgres.domain-db.port}/${dev-db.postgres.domain-db.name}
         username: ${dev-db.postgres.domain-db.username}
         password: ${dev-db.postgres.domain-db.password}
-        auto-commit: false
 
   jpa:
     properties:
       hibernate:
-        format_sql: true
-        highlight_sql: true
         hbm2ddl.auto: validate
-        default_batch_fetch_size: 100
     open-in-view: false
-    show-sql: true
 
   data:
     mongodb:
       uri: mongodb+srv://${dev-db.mongo.username}:${dev-db.mongo.password}@${dev-db.mongo.host}/?retryWrites=true&w=majority&appName=${dev-db.mongo.database}
       database: ${dev-db.mongo.database}
-
-logging:
-  level:
-    org.hibernate.orm.jdbc.bind: trace
-#    org.springframework.transaction.interceptor: trace

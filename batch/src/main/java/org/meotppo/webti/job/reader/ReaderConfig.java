@@ -1,16 +1,13 @@
 package org.meotppo.webti.job.reader;
 
-import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
+import java.util.Collections;
+import org.meotppo.webti.domain.entity.mongo.result.TestResult;
 import org.springframework.batch.item.data.MongoPagingItemReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-
-import java.time.LocalDateTime;
-import java.util.Collections;
 
 @Configuration
 public class ReaderConfig {

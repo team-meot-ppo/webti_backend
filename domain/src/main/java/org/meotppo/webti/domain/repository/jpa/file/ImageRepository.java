@@ -4,5 +4,5 @@ import org.meotppo.webti.domain.entity.jpa.file.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {
-    
+
 }

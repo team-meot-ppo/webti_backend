@@ -2,13 +2,14 @@ package org.meotppo.webti.domain.dto.result;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.querydsl.core.annotations.QueryProjection;
+import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 public class StatisticDTO {
+
     private String result;
     private Long count;
     private Long matchCount;

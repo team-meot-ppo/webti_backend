@@ -46,6 +46,9 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok' // Lombok for testing
     testImplementation 'org.springframework.batch:spring-batch-test' // Spring Batch Test
     testRuntimeOnly 'com.h2database:h2' // H2 for testing
+    testImplementation 'de.bwaldvogel:mongo-java-server:1.45.0' // Mongo for testing
+    testImplementation(testFixtures(project(':domain'))) // Fixture for testing
+
 }
 
 tasks.named('test') {

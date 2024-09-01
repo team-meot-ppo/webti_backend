@@ -1,36 +1,34 @@
 package org.meotppo.webti.log.aop;
 
+import static org.meotppo.webti.log.filter.MDCFilter.REQUEST_ID;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.MDC;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.meotppo.webti.log.filter.MDCFilter.REQUEST_ID;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LogInfoDto {
-    private String url;
-    private String name;
-    private String method;
-    private Map<String, String> header;
-    private String parameters;
-    private String body;
-    private String ipAddress;
+
+    private final String url;
+    private final String name;
+    private final String method;
+    private final Map<String, String> header;
+    private final String parameters;
+    private final String body;
+    private final String ipAddress;
+    private final String requestId;
+    @Setter
     private String exception;
-    private String requestId;
 
     public LogInfoDto(ProceedingJoinPoint joinPoint, Class<?> targetClass, ObjectMapper objectMapper) throws Exception {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
