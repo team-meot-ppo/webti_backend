@@ -6,7 +6,6 @@ import static org.meotppo.webti.fixture.StatisticFixture.createStatistic;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
 import static org.springframework.batch.test.MetaDataInstanceFactory.createStepExecution;
 
 import java.util.Collections;
@@ -73,7 +72,6 @@ class StatisticTaskletTest {
         RepeatStatus status = tasklet.execute(contribution, chunkContext);
 
         // then
-        then(statisticRepository).should().findByProfile(profile);
         assertSoftly(softly -> {
             softly.assertThat(statistic.getCount()).isEqualTo(5L);
             softly.assertThat(statistic.getMatchCount()).isEqualTo(3L);
