@@ -379,11 +379,9 @@ public class InitData {
                         .build()
         );
 
-        for (Question question : questionData) {
-            for (Option option : question.getOptions()) {
-                option.setQuestion(question);
-            }
-        }
+        questionData.forEach(question ->
+                question.getOptions().forEach(option -> option.setQuestion(question))
+        );
 
         questionRepository.saveAll(questionData);
 

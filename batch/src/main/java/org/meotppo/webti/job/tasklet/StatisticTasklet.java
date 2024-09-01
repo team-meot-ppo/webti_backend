@@ -53,18 +53,19 @@ public class StatisticTasklet implements Tasklet {
     }
 
     private void processDocument(Document result) {
-        MbtiType mbtiType = getMbtiType(result, "_id").orElseThrow(
-                () -> new IllegalArgumentException("MBTI type is missing or invalid"));
-        Long count = getLongValue(result, "count").orElseThrow(() -> new IllegalArgumentException("Count is missing"));
-        Long matchCount = getLongValue(result, "matchCount").orElseThrow(
-                () -> new IllegalArgumentException("Match count is missing"));
+        MbtiType mbtiType = getMbtiType(result, "_id")
+                .orElseThrow(() -> new IllegalArgumentException("MBTI type is missing or invalid"));
+        Long count = getLongValue(result, "count")
+                .orElseThrow(() -> new IllegalArgumentException("Count is missing"));
+        Long matchCount = getLongValue(result, "matchCount")
+                .orElseThrow(() -> new IllegalArgumentException("Match count is missing"));
         Profile profile = profileRepository.findByMbtiType(mbtiType)
                 .orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + mbtiType));
 
-        Statistic existing = statisticRepository.findByProfile(profile)
+        Statistic statistic = statisticRepository.findByProfile(profile)  // 업데이트 성능은 RDB가 빠름
                 .orElseThrow(() -> new RuntimeException("Statistic not found for developer profile: " + profile));
-        existing.updateCount(existing.getCount() + count);
-        existing.updateMatchCount(existing.getMatchCount() + matchCount);
+        statistic.updateCount(statistic.getCount() + count);
+        statistic.updateMatchCount(statistic.getMatchCount() + matchCount);
     }
 
     private Optional<MbtiType> getMbtiType(Document document, String key) {
