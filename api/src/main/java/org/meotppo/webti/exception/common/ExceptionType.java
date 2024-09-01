@@ -1,4 +1,4 @@
-package org.meotppo.webti.response.exception.common;
+package org.meotppo.webti.exception.common;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;

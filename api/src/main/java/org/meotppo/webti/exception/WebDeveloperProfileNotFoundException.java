@@ -1,4 +1,7 @@
-package org.meotppo.webti.response.exception.common;
+package org.meotppo.webti.exception;
+
+import org.meotppo.webti.exception.common.BusinessException;
+import org.meotppo.webti.exception.common.ExceptionType;
 
 public class WebDeveloperProfileNotFoundException extends BusinessException {
 

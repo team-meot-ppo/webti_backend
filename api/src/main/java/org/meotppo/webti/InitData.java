@@ -389,7 +389,7 @@ public class InitData {
 
         List<Statistic> statisticData = profileData.stream()
                 .map(profile -> Statistic.builder()
-                        .developerProfile(profile)
+                        .profile(profile)
                         .count(0L)
                         .matchCount(0L)
                         .build())

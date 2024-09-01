@@ -1,4 +1,4 @@
-package org.meotppo.webti.response.exception.common;
+package org.meotppo.webti.exception.common;
 
 import lombok.Getter;
 
