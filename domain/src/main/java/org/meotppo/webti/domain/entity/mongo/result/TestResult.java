@@ -10,8 +10,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Document(collection = "test_result")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TestResult extends MongoEntityDate {
 
     @Id

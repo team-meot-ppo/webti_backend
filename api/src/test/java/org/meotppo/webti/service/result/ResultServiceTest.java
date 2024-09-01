@@ -47,15 +47,15 @@ class ResultServiceTest {
     void testReadStatistics() {
         // given
         List<StatisticDTO> statistics = List.of(
-                new StatisticDTO("철저한 데이터 관리형 백엔드 개발자", 5L, 3L, LocalDateTime.now())
+                new StatisticDTO("Developer 1", 5L, 3L, LocalDateTime.now())
         );
         given(statisticRepository.findAllStatisticDtos()).willReturn(statistics);
 
         // when
-        List<StatisticDTO> result = resultService.readStatistics();
+        List<StatisticDTO> statisticDtos = resultService.readStatistics();
 
         // then
-        assertThat(result).isEqualTo(statistics);
+        assertThat(statisticDtos).isEqualTo(statistics);
         then(statisticRepository).should().findAllStatisticDtos();
     }
 }

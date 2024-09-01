@@ -58,7 +58,7 @@ class ResultControllerTest {
     void testReadStatistics() throws Exception {
         // given
         List<StatisticDTO> statistics = List.of(
-                new StatisticDTO("철저한 데이터 관리형 백엔드 개발자", 5L, 3L, LocalDateTime.now())
+                new StatisticDTO("Developer", 5L, 3L, LocalDateTime.now())
         );
         given(resultService.readStatistics()).willReturn(statistics);
 
