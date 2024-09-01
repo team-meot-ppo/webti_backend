@@ -1,1 +1,1 @@
-![Frame 1 (1)](https://github.com/team-meot-ppo/webti_backend/assets/118044367/036028e7-33d3-4251-bd1f-740a1da2ac19)
+![Frame 1 (9)](https://github.com/user-attachments/assets/476c294c-778b-494e-9005-7df71e07c7da)
