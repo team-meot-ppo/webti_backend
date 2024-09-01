@@ -6,7 +6,7 @@ import org.meotppo.webti.domain.entity.type.MbtiType;
 
 @Getter
 @RequiredArgsConstructor
-public class ProfileResponseDto {
+public class ProfileResponse {
     private final String result;
     private final String description;
     private final MbtiType mbtiType;

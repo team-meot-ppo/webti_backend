@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class QuestionDto {
+
     private final String question;
+
     private final List<PropensityOptionDto> options;
 }

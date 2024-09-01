@@ -3,7 +3,7 @@ package org.meotppo.webti.service.analysis;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.domain.dto.analysis.ProfileResponseDto;
+import org.meotppo.webti.domain.dto.analysis.ProfileResponse;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
 import org.meotppo.webti.domain.entity.type.MbtiType;
@@ -24,7 +24,7 @@ public class AnalysisService {
     private final ProfileRepository profileRepository;
     private final QuestionRepository questionRepository;
 
-    public ProfileResponseDto analyzeType(AnalysisRequest analysisRequest) {
+    public ProfileResponse analyzeType(AnalysisRequest analysisRequest) {
 
         String type = (analysisRequest.getEXTROVERSION() > analysisRequest.getINTROVERSION() ? "E" : "I")
                 + (analysisRequest.getSENSING() > analysisRequest.getINTUITION() ? "S" : "N")

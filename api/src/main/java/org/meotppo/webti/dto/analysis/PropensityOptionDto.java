@@ -9,6 +9,8 @@ import org.meotppo.webti.domain.entity.type.PersonalityType;
 public class PropensityOptionDto {
 
     private final String answer;
+
     private final PersonalityType personalityType;
+
     private final int score;
 }

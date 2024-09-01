@@ -1,5 +1,6 @@
-package org.meotppo.webti.log.filter;
+package org.meotppo.webti.config;
 
+import org.meotppo.webti.log.filter.MDCFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

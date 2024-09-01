@@ -3,7 +3,7 @@ package org.meotppo.webti.controller.analysis;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.meotppo.webti.domain.dto.analysis.ProfileResponseDto;
+import org.meotppo.webti.domain.dto.analysis.ProfileResponse;
 import org.meotppo.webti.dto.analysis.AnalysisRequest;
 import org.meotppo.webti.dto.analysis.QuestionDto;
 import org.meotppo.webti.service.analysis.AnalysisService;
@@ -23,9 +23,9 @@ public class AnalysisController {
     private final AnalysisService analysisService;
 
     @PostMapping("/result")
-    public ResponseEntity<ProfileResponseDto> propensityAnalysis(
+    public ResponseEntity<ProfileResponse> propensityAnalysis(
             @RequestBody @Valid AnalysisRequest analysisRequest) {
-        ProfileResponseDto responseDto = analysisService.analyzeType(analysisRequest);
+        ProfileResponse responseDto = analysisService.analyzeType(analysisRequest);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(responseDto);

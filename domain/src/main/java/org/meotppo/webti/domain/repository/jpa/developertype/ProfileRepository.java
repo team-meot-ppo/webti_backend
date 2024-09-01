@@ -1,7 +1,7 @@
 package org.meotppo.webti.domain.repository.jpa.developertype;
 
 import java.util.Optional;
-import org.meotppo.webti.domain.dto.analysis.ProfileResponseDto;
+import org.meotppo.webti.domain.dto.analysis.ProfileResponse;
 import org.meotppo.webti.domain.entity.jpa.profile.Profile;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,5 +16,5 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
             + "FROM Profile p "
             + "JOIN p.image i "
             + "WHERE p.mbtiType = :mbtiType")
-    Optional<ProfileResponseDto> findProfileByMbtiType(MbtiType mbtiType);
+    Optional<ProfileResponse> findProfileByMbtiType(MbtiType mbtiType);
 }
