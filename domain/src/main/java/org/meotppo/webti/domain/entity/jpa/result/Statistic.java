@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.entity.jpa.statistic;
+package org.meotppo.webti.domain.entity.jpa.result;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,16 +17,17 @@ import org.meotppo.webti.domain.entity.jpa.profile.Profile;
 
 @Getter
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Statistic extends JpaEntityDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "statistic_id")
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "developer_profile_id", nullable = false)
-    private Profile developerProfile;
+    @JoinColumn(name = "profile_id", nullable = false)
+    private Profile profile;
 
     @Column(nullable = false)
     private Long count;
@@ -34,8 +36,8 @@ public class Statistic extends JpaEntityDate {
     private Long matchCount;
 
     @Builder
-    public Statistic(Profile developerProfile, Long count, Long matchCount) {
-        this.developerProfile = developerProfile;
+    public Statistic(Profile profile, Long count, Long matchCount) {
+        this.profile = profile;
         this.count = count;
         this.matchCount = matchCount;
     }

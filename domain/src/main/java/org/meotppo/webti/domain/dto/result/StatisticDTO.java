@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class StatisticDTO {
+
     private String result;
     private Long count;
     private Long matchCount;

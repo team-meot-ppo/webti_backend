@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import org.bson.Document;
 import org.meotppo.webti.domain.entity.jpa.profile.Profile;
-import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
+import org.meotppo.webti.domain.entity.jpa.result.Statistic;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.repository.jpa.developertype.ProfileRepository;
 import org.meotppo.webti.domain.repository.jpa.statistic.StatisticRepository;
@@ -61,7 +61,7 @@ public class StatisticTasklet implements Tasklet {
         Profile profile = profileRepository.findByMbtiType(mbtiType)
                 .orElseThrow(() -> new IllegalArgumentException("No profile found for type: " + mbtiType));
 
-        Statistic existing = statisticRepository.findByDeveloperProfile(profile)
+        Statistic existing = statisticRepository.findByProfile(profile)
                 .orElseThrow(() -> new RuntimeException("Statistic not found for developer profile: " + profile));
         existing.updateCount(existing.getCount() + count);
         existing.updateMatchCount(existing.getMatchCount() + matchCount);

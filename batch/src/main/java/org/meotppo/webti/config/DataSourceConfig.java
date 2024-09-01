@@ -41,8 +41,8 @@ public class DataSourceConfig {
         return new LazyConnectionDataSourceProxy(new HikariDataSource(domainHikariConfig()));
     }
 
-    @Profile({"test", "local"})
     @Bean
+    @Profile({"test", "local"})
     public DataSourceInitializer metaDataSourceInitializer() {
         DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
         dataSourceInitializer.setDataSource(metaDataSource());

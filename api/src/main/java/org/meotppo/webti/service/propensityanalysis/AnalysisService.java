@@ -12,7 +12,7 @@ import org.meotppo.webti.domain.repository.jpa.question.QuestionRepository;
 import org.meotppo.webti.dto.analysis.AnalysisRequest;
 import org.meotppo.webti.dto.analysis.PropensityOptionDto;
 import org.meotppo.webti.dto.analysis.QuestionDto;
-import org.meotppo.webti.response.exception.common.WebDeveloperProfileNotFoundException;
+import org.meotppo.webti.exception.WebDeveloperProfileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

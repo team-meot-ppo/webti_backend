@@ -3,7 +3,7 @@ package org.meotppo.webti.service.result;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.meotppo.webti.domain.dto.result.StatisticDTO;
-import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
+import org.meotppo.webti.domain.entity.mongo.result.TestResult;
 import org.meotppo.webti.domain.repository.jpa.statistic.StatisticRepository;
 import org.meotppo.webti.domain.repository.mongo.testresult.TestResultRepository;
 import org.meotppo.webti.dto.result.TestResultRequest;

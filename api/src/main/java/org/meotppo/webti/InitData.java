@@ -8,7 +8,7 @@ import org.meotppo.webti.domain.entity.jpa.file.Image;
 import org.meotppo.webti.domain.entity.jpa.profile.Profile;
 import org.meotppo.webti.domain.entity.jpa.question.Option;
 import org.meotppo.webti.domain.entity.jpa.question.Question;
-import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
+import org.meotppo.webti.domain.entity.jpa.result.Statistic;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.entity.type.PersonalityType;
 import org.meotppo.webti.domain.repository.jpa.developertype.ProfileRepository;

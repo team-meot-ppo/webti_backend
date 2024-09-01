@@ -1,7 +1,7 @@
 package org.meotppo.webti.domain.repository.jpa.statistic;
 
 
-import static org.meotppo.webti.domain.entity.jpa.statistic.QStatistic.statistic;
+import static org.meotppo.webti.domain.entity.jpa.result.QStatistic.statistic;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
@@ -18,7 +18,7 @@ public class StatisticRepositoryImpl implements QuerydslStatisticRepository {
     public List<StatisticDTO> findAllStatisticDtos() {
         return queryFactory
                 .select(new QStatisticDTO(
-                        statistic.developerProfile.result,
+                        statistic.profile.result,
                         statistic.count,
                         statistic.matchCount,
                         statistic.modifiedAt

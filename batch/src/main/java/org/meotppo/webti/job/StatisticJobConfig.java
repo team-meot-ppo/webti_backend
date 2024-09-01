@@ -5,8 +5,8 @@ import static org.meotppo.webti.job.processor.ProcessorConfig.STATISTIC_PROCESSO
 import static org.meotppo.webti.job.reader.ReaderConfig.TEST_RESULT_READER;
 import static org.meotppo.webti.job.writer.WriterConfig.STATISTIC_WRITER;
 
-import org.meotppo.webti.domain.entity.jpa.statistic.Statistic;
-import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
+import org.meotppo.webti.domain.entity.jpa.result.Statistic;
+import org.meotppo.webti.domain.entity.mongo.result.TestResult;
 import org.meotppo.webti.job.tasklet.CleanupTasklet;
 import org.meotppo.webti.job.tasklet.StatisticTasklet;
 import org.springframework.batch.core.Job;

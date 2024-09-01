@@ -1,4 +1,4 @@
-package org.meotppo.webti.domain.entity.mongo.testresult;
+package org.meotppo.webti.domain.entity.mongo.result;
 
 import lombok.AccessLevel;
 import lombok.Builder;
