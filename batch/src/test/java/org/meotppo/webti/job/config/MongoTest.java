@@ -1,4 +1,4 @@
-package org.meotppo.webti.config;
+package org.meotppo.webti.job.config;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

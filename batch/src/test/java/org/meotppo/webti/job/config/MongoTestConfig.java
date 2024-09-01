@@ -1,4 +1,4 @@
-package org.meotppo.webti.config;
+package org.meotppo.webti.job.config;
 
 import de.bwaldvogel.mongo.MongoServer;
 import de.bwaldvogel.mongo.backend.memory.MemoryBackend;

@@ -5,10 +5,10 @@ import static org.meotppo.webti.fixture.TestResultFixture.createTestResult;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.meotppo.webti.config.MongoTest;
 import org.meotppo.webti.domain.entity.mongo.result.TestResult;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.repository.mongo.testresult.TestResultRepository;
+import org.meotppo.webti.job.config.MongoTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
