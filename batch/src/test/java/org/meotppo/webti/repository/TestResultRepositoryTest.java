@@ -5,7 +5,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.meotppo.webti.config.MongoTest;
-import org.meotppo.webti.domain.entity.mongo.testresult.TestResult;
+import org.meotppo.webti.domain.entity.mongo.result.TestResult;
 import org.meotppo.webti.domain.entity.type.MbtiType;
 import org.meotppo.webti.domain.repository.mongo.testresult.TestResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +61,8 @@ public class TestResultRepositoryTest {
         testResultRepository.save(result1);
         testResultRepository.save(result2);
 
-        // when
         assertSoftly(softly -> {
+            // when
             softly.assertThat(testResultRepository.findAll()).hasSize(2);
             testResultRepository.deleteAll();
 
