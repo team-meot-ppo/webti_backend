@@ -12,7 +12,7 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
     Optional<Profile> findByMbtiType(MbtiType mbtiType);
 
-    @Query("SELECT new org.meotppo.webti.domain.dto.analysis.ProfileResponseDto(p.result, p.description, p.mbtiType, i.url) "
+    @Query("SELECT new org.meotppo.webti.domain.dto.analysis.ProfileResponse(p.result, p.description, p.mbtiType, i.url) "
             + "FROM Profile p "
             + "JOIN p.image i "
             + "WHERE p.mbtiType = :mbtiType")

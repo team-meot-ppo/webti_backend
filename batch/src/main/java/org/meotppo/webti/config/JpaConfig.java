@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EnableJpaAuditing
 @EnableJpaRepositories(
-        basePackages = "org.meotppo.webti.domain.repository.jpa"
-        , entityManagerFactoryRef = DOMAIN_ENTITY_MANAGER_FACTORY
-        , transactionManagerRef = DOMAIN_TRANSACTION_MANAGER
+        basePackages = "org.meotppo.webti.domain.repository.jpa",
+        entityManagerFactoryRef = DOMAIN_ENTITY_MANAGER_FACTORY,
+        transactionManagerRef = DOMAIN_TRANSACTION_MANAGER
 )
 public class JpaConfig {
 }
