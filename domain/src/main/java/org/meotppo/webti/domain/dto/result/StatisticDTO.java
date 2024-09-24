@@ -3,18 +3,16 @@ package org.meotppo.webti.domain.dto.result;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.querydsl.core.annotations.QueryProjection;
 import java.time.LocalDateTime;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@NoArgsConstructor
+@Getter
 public class StatisticDTO {
 
-    private String result;
-    private Long count;
-    private Long matchCount;
+    private final String result;
+    private final Long count;
+    private final Long matchCount;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime modifiedAt;
+    private final LocalDateTime modifiedAt;
 
     @QueryProjection
     public StatisticDTO(String result, Long count, Long matchCount, LocalDateTime modifiedAt) {
